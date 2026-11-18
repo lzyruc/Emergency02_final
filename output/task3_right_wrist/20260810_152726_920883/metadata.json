@@ -1,0 +1,12 @@
+{
+  "camera_key": "right",
+  "color_encoding": "BGR uint8",
+  "depth_unit": "mm",
+  "image_size": [
+    1280,
+    720
+  ],
+  "valid_depth_pixels": 679463,
+  "valid_depth_min_mm": 93,
+  "valid_depth_max_mm": 8707
+}

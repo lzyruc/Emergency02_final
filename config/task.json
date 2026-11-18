@@ -1,0 +1,113 @@
+{
+  "navigation": {
+    "initial_node": "startpoint",
+    "linear_speed_m_s": 1.2,
+    "angular_speed_rad_s": 1.57,
+    "blue_approach_x_scale": 0.8,
+    "blue_approach_y_scale": 0.9,
+    "blue_approach_turn_scale": 0.75
+  },
+  "channel_region": {
+    "coordinate_frame": "navigation_logical",
+  "polygon_xy_m": [
+      [0.41, -0.525],
+      [1.45, -0.525],
+      [1.45, -1.475],
+      [4.25, -1.475],
+      [4.25, -0.375],
+      [2.35, -0.375],
+      [2.35, 0.485],
+      [0.41, 0.485]
+    ],
+    "outside_ignore_distance_m_by_type": {
+      "chair": 0.3,
+      "box": 0.3,
+      "bin": 0.15,
+      "filebox": 0.15
+    }
+  },
+  "station": {
+    "head_camera_key": "head",
+    "head_color_encoding": "bgr",
+    "head_depth_unit": "mm",
+    "right_camera_key": "right"
+  },
+  "hands": {
+    "left_open_position": 0.0,
+    "left_close_position": 1.0,
+    "right_open_position": 0.0,
+    "right_close_position": 1.0
+  },
+  "motion": {
+    "moveit_timeout_s": 60.0,
+    "moveit_velocity_scale": 0.1,
+    "moveit_acceleration_scale": 0.1
+  },
+  "bin_filebox_grasp": {
+    "second_approach_extra_z_tcp_m": {
+      "filebox": 0.20,
+      "bin": 0.20
+    }
+  },
+  "chair_grasp": {
+    "left_roi_normalized_xyxy": [0.0, 0.0, 1.0, 1.0],
+    "right_roi_normalized_xyxy": [0.0, 0.0, 1.0, 1.0],
+    "min_depth_mm": 150,
+    "max_depth_mm": 320,
+    "close_kernel_px": 9,
+    "min_component_area_px": 1000,
+    "min_major_span_px": 100,
+    "min_elongation_ratio": 1.2,
+    "cross_section_band_px": 5,
+    "side_sample_offset_px": 15,
+    "min_side_jump_mm": 30.0,
+    "min_grasp_width_m": 0.02,
+    "max_grasp_width_m": 0.10,
+    "grasp_target_x_offset_m": -0.08,
+    "stability_patch_px": 9,
+    "min_patch_valid_ratio": 0.5,
+    "max_patch_depth_range_mm": 80.0
+  },
+  "chair_side_grasp": {
+    "left_roi_normalized_xyxy": [0.12, 0.08, 0.92, 0.72],
+    "right_roi_normalized_xyxy": [0.08, 0.08, 0.88, 0.72],
+    "min_depth_mm": 180,
+    "max_depth_mm": 520,
+    "close_kernel_px": 9,
+    "min_component_area_px": 700,
+    "min_major_span_px": 80,
+    "min_elongation_ratio": 1.4,
+    "cross_section_band_px": 5,
+    "side_sample_offset_px": 15,
+    "min_side_jump_mm": 22.0,
+    "min_grasp_width_m": 0.015,
+    "max_grasp_width_m": 0.12,
+    "grasp_target_x_offset_m": -0.08,
+    "stability_patch_px": 9,
+    "min_patch_valid_ratio": 0.35,
+    "max_patch_depth_range_mm": 100.0,
+    "min_axis_from_horizontal_deg": 35.0,
+    "min_edge_dist_px": 12
+  },
+  "black_grasp": {
+    "left_roi_normalized_xyxy": [0.25, 0.03, 0.95, 0.97],
+    "right_roi_normalized_xyxy": [0.20, 0.03, 0.98, 0.97],
+    "pregrasp_extra_left_tcp_m": [0.0, 0.0, 0.06],
+    "pregrasp_extra_right_tcp_m": [0.0, 0.0, 0.06],
+    "final_grasp_offset_left_tcp_m": [0.0, 0.0, 0.13],
+    "final_grasp_offset_right_tcp_m": [0.0, 0.0, 0.13]
+  },
+  "task3_pull_cap": {
+    "right_roi_normalized_xyxy": [0.44, 0.03, 0.98, 0.97],
+    "final_grasp_offset_right_tcp_m": [0.0, 0.0, 0.19],
+    "waist_yaw_delta_rad": 0.5585053606381855,
+    "pull_right_arm_joint_delta_rad": {
+      "shoulder_pitch": -0.15707963267948966,
+      "elbow_pitch": 0.20943951023931956,
+      "elbow_yaw": 0.03490658503988659
+    },
+    "post_grasp_retreat_z_tcp_m": 0.07,
+    "slot_radius_scale": 1.0,
+    "slot_insert_z_tcp_m": -0.07
+  }
+}

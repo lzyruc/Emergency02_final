@@ -1,0 +1,1447 @@
+{
+  "schema_version": 4,
+  "kind": "xrocs.move_by_route",
+  "created_at": "2026-07-22T13:05:19.787+00:00",
+  "updated_at": "2026-07-26T07:05:40.886Z",
+  "coordinate_systems": {
+    "logical": {
+      "frame": "local_start",
+      "x_axis": "forward",
+      "y_axis": "left",
+      "theta": "degrees_counterclockwise_0_to_359",
+      "initial_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      }
+    },
+    "observed": {
+      "frame": "chassis_map",
+      "source": "GET /api/core/navigation/v1/pose",
+      "yaw": "radians_counterclockwise"
+    }
+  },
+  "motion_order": "translate_then_rotate",
+  "points": [
+    {
+      "sequence": 0,
+      "name": "startpoint",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "recorded_at": "2026-07-22T13:05:27.333+00:00"
+    },
+    {
+      "sequence": 1,
+      "name": "h0_track_turn_1",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 1,
+      "recorded_at": "2026-07-22T13:05:52.866+00:00"
+    },
+    {
+      "sequence": 2,
+      "name": "h270_track_turn_1",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 2,
+      "recorded_at": "2026-07-22T13:06:19.582+00:00"
+    },
+    {
+      "sequence": 3,
+      "name": "h270_track_turn_2",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 3,
+      "recorded_at": "2026-07-22T13:06:43.109+00:00"
+    },
+    {
+      "sequence": 4,
+      "name": "h0_track_turn_2",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 4,
+      "recorded_at": "2026-07-22T13:07:06.344+00:00"
+    },
+    {
+      "sequence": 5,
+      "name": "h0_track_end",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 5,
+      "recorded_at": "2026-07-22T13:07:39.388+00:00"
+    },
+    {
+      "sequence": 6,
+      "name": "h270_track_end",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 6,
+      "recorded_at": "2026-07-22T13:07:57.906+00:00"
+    },
+    {
+      "sequence": 7,
+      "name": "h270_task2_start",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 7,
+      "recorded_at": "2026-07-22T13:08:36.558+00:00"
+    },
+    {
+      "sequence": 8,
+      "name": "h270_window1_turn",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "before_action": 8,
+      "recorded_at": "2026-07-22T13:10:22.802+00:00"
+    },
+    {
+      "sequence": 9,
+      "name": "h180_window1_turn",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "before_action": 9,
+      "recorded_at": "2026-07-22T13:11:14.336+00:00"
+    },
+    {
+      "sequence": 10,
+      "name": "h180_window1_action",
+      "logical_pose": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "before_action": 11,
+      "recorded_at": "2026-07-22T13:11:49.359+00:00"
+    },
+    {
+      "sequence": 11,
+      "name": "h270_window1_action",
+      "logical_pose": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "before_action": 12,
+      "recorded_at": "2026-07-22T13:12:15.897+00:00"
+    },
+    {
+      "sequence": 12,
+      "name": "h270_transfer_point",
+      "logical_pose": {
+        "x_m": 2.2,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 17,
+      "recorded_at": "2026-07-22T13:16:38.407+00:00"
+    },
+    {
+      "sequence": 13,
+      "name": "h270_task2_check",
+      "logical_pose": {
+        "x_m": 2.2,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "before_action": 18,
+      "recorded_at": "2026-07-22T13:17:11.768+00:00"
+    },
+    {
+      "sequence": 14,
+      "name": "h270_window2_turn",
+      "logical_pose": {
+        "x_m": 0.95,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "before_action": 19,
+      "recorded_at": "2026-07-22T13:17:45.843+00:00"
+    },
+    {
+      "sequence": 15,
+      "name": "h270_window2_action",
+      "logical_pose": {
+        "x_m": 0.95,
+        "y_m": -3.05,
+        "theta_deg": 270.0
+      },
+      "before_action": 22,
+      "recorded_at": "2026-07-22T13:19:12.082+00:00"
+    },
+    {
+      "sequence": 16,
+      "name": "h180_task3_check",
+      "logical_pose": {
+        "x_m": 0.25,
+        "y_m": -2.5,
+        "theta_deg": 180.0
+      },
+      "before_action": 24,
+      "recorded_at": "2026-07-26T06:24:08.405Z"
+    },
+    {
+      "sequence": 17,
+      "name": "h180_task3_end",
+      "logical_pose": {
+        "x_m": 0.25,
+        "y_m": -1.05,
+        "theta_deg": 180.0
+      },
+      "before_action": 25,
+      "recorded_at": "2026-07-22T13:21:26.365+00:00"
+    },
+    {
+      "sequence": 18,
+      "name": "h180_return_origin",
+      "logical_pose": {
+        "x_m": 0.25,
+        "y_m": -0.1,
+        "theta_deg": 180.0
+      },
+      "before_action": 26,
+      "recorded_at": "2026-07-22T13:22:03.540+00:00"
+    },
+    {
+      "sequence": 19,
+      "name": "h0_return_origin",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": -0.1,
+        "theta_deg": 0.0
+      },
+      "before_action": 27,
+      "recorded_at": "2026-07-22T13:22:36.545+00:00"
+    }
+  ],
+  "actions": [
+    {
+      "sequence": 0,
+      "status": "completed",
+      "started_at": "2026-07-22T13:05:32.644+00:00",
+      "logical_pose_before": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 2.0,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 2000,
+          "logical_pose_before": {
+            "x_m": 0.0,
+            "y_m": 0.0,
+            "theta_deg": 0.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.0,
+            "y_m": 0.0,
+            "theta_deg": 0.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "finished_at": "2026-07-22T13:05:45.527+00:00"
+    },
+    {
+      "sequence": 1,
+      "status": "completed",
+      "started_at": "2026-07-22T13:06:03.583+00:00",
+      "logical_pose_before": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.0,
+        "rotation_deg_ccw": -90.0
+      },
+      "commands": [
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 2.0,
+            "y_m": 0.0,
+            "theta_deg": 0.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.0,
+            "y_m": 0.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:06:09.704+00:00"
+    },
+    {
+      "sequence": 2,
+      "status": "completed",
+      "started_at": "2026-07-22T13:06:27.744+00:00",
+      "logical_pose_before": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 1.0,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 1000,
+          "logical_pose_before": {
+            "x_m": 2.0,
+            "y_m": 0.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.0,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:06:35.608+00:00"
+    },
+    {
+      "sequence": 3,
+      "status": "completed",
+      "started_at": "2026-07-22T13:06:51.306+00:00",
+      "logical_pose_before": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.0,
+        "rotation_deg_ccw": 90.0
+      },
+      "commands": [
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": 1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 2.0,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.0,
+            "y_m": -1.0,
+            "theta_deg": 0.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "finished_at": "2026-07-22T13:06:57.467+00:00"
+    },
+    {
+      "sequence": 4,
+      "status": "completed",
+      "started_at": "2026-07-22T13:07:11.594+00:00",
+      "logical_pose_before": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 2.8,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 2800,
+          "logical_pose_before": {
+            "x_m": 2.0,
+            "y_m": -1.0,
+            "theta_deg": 0.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.8,
+            "y_m": -1.0,
+            "theta_deg": 0.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "finished_at": "2026-07-22T13:07:28.260+00:00"
+    },
+    {
+      "sequence": 5,
+      "status": "completed",
+      "started_at": "2026-07-22T13:07:46.241+00:00",
+      "logical_pose_before": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.0,
+        "rotation_deg_ccw": -90.0
+      },
+      "commands": [
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 4.8,
+            "y_m": -1.0,
+            "theta_deg": 0.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.8,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:07:52.364+00:00"
+    },
+    {
+      "sequence": 6,
+      "status": "completed",
+      "started_at": "2026-07-22T13:08:13.061+00:00",
+      "logical_pose_before": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 1.0,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 1000,
+          "logical_pose_before": {
+            "x_m": 4.8,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.8,
+            "y_m": -2.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.8,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:08:20.844+00:00"
+    },
+    {
+      "sequence": 7,
+      "status": "planned",
+      "started_at": "2026-07-22T13:09:20.176+00:00",
+      "logical_pose_before": {
+        "x_m": 4.8,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 1.15,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 1150,
+          "logical_pose_before": {
+            "x_m": 4.8,
+            "y_m": -2.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.8,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      }
+    },
+    {
+      "sequence": 8,
+      "status": "completed",
+      "started_at": "2026-07-22T13:10:50.496+00:00",
+      "logical_pose_before": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.0,
+        "rotation_deg_ccw": -90.0
+      },
+      "commands": [
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 4.8,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.8,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:10:56.636+00:00"
+    },
+    {
+      "sequence": 9,
+      "status": "completed",
+      "started_at": "2026-07-22T13:11:18.126+00:00",
+      "logical_pose_before": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.7,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 700,
+          "logical_pose_before": {
+            "x_m": 4.8,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.1,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.1,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:11:24.660+00:00"
+    },
+    {
+      "sequence": 10,
+      "status": "completed",
+      "started_at": "2026-07-22T13:11:36.752+00:00",
+      "logical_pose_before": {
+        "x_m": 4.1,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 100,
+          "logical_pose_before": {
+            "x_m": 4.1,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.0,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:11:38.545+00:00"
+    },
+    {
+      "sequence": 11,
+      "status": "completed",
+      "started_at": "2026-07-22T13:11:57.214+00:00",
+      "logical_pose_before": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.0,
+        "rotation_deg_ccw": 90.0
+      },
+      "commands": [
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": 1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 4.0,
+            "y_m": -3.15,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.0,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:12:03.353+00:00"
+    },
+    {
+      "sequence": 12,
+      "status": "completed",
+      "started_at": "2026-07-22T13:14:10.999+00:00",
+      "logical_pose_before": {
+        "x_m": 4.0,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 90.0,
+        "distance_m": 0.7,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 90.0,
+          "direction_rad": 1.5707963267948966,
+          "distance_mm": 700,
+          "logical_pose_before": {
+            "x_m": 4.0,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.7,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.7,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:14:17.548+00:00"
+    },
+    {
+      "sequence": 13,
+      "status": "completed",
+      "started_at": "2026-07-22T13:14:34.729+00:00",
+      "logical_pose_before": {
+        "x_m": 4.7,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 180.0,
+        "distance_m": 1.15,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 180.0,
+          "direction_rad": -3.141592653589793,
+          "distance_mm": 1150,
+          "logical_pose_before": {
+            "x_m": 4.7,
+            "y_m": -3.15,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.7,
+            "y_m": -2.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.7,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:14:43.129+00:00"
+    },
+    {
+      "sequence": 14,
+      "status": "completed",
+      "started_at": "2026-07-22T13:15:01.923+00:00",
+      "logical_pose_before": {
+        "x_m": 4.7,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 180.0,
+        "distance_m": 1.0,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 180.0,
+          "direction_rad": -3.141592653589793,
+          "distance_mm": 1000,
+          "logical_pose_before": {
+            "x_m": 4.7,
+            "y_m": -2.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 4.7,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 4.7,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:15:09.759+00:00"
+    },
+    {
+      "sequence": 15,
+      "status": "completed",
+      "started_at": "2026-07-22T13:15:46.793+00:00",
+      "logical_pose_before": {
+        "x_m": 4.7,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 2.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 2100,
+          "logical_pose_before": {
+            "x_m": 4.7,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.6,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.6,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:16:00.293+00:00"
+    },
+    {
+      "sequence": 16,
+      "status": "completed",
+      "started_at": "2026-07-22T13:16:25.724+00:00",
+      "logical_pose_before": {
+        "x_m": 2.6,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 0.4,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 400,
+          "logical_pose_before": {
+            "x_m": 2.6,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.2,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.2,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:16:30.393+00:00"
+    },
+    {
+      "sequence": 17,
+      "status": "completed",
+      "started_at": "2026-07-22T13:16:45.970+00:00",
+      "logical_pose_before": {
+        "x_m": 2.2,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 1.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 1100,
+          "logical_pose_before": {
+            "x_m": 2.2,
+            "y_m": -1.0,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 2.2,
+            "y_m": -2.1,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 2.2,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:16:54.401+00:00"
+    },
+    {
+      "sequence": 18,
+      "status": "completed",
+      "started_at": "2026-07-22T13:17:27.304+00:00",
+      "logical_pose_before": {
+        "x_m": 2.2,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 1.25,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 1250,
+          "logical_pose_before": {
+            "x_m": 2.2,
+            "y_m": -2.1,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.95,
+            "y_m": -2.1,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.95,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:17:36.378+00:00"
+    },
+    {
+      "sequence": 19,
+      "status": "completed",
+      "started_at": "2026-07-22T13:17:52.633+00:00",
+      "logical_pose_before": {
+        "x_m": 0.95,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.75,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 750,
+          "logical_pose_before": {
+            "x_m": 0.95,
+            "y_m": -2.1,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.95,
+            "y_m": -2.85,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.95,
+        "y_m": -2.85,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:17:59.509+00:00"
+    },
+    {
+      "sequence": 20,
+      "status": "completed",
+      "started_at": "2026-07-22T13:18:09.648+00:00",
+      "logical_pose_before": {
+        "x_m": 0.95,
+        "y_m": -2.85,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 100,
+          "logical_pose_before": {
+            "x_m": 0.95,
+            "y_m": -2.85,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.95,
+            "y_m": -2.95,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.95,
+        "y_m": -2.95,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:18:11.421+00:00"
+    },
+    {
+      "sequence": 21,
+      "status": "completed",
+      "started_at": "2026-07-22T13:18:55.989+00:00",
+      "logical_pose_before": {
+        "x_m": 0.95,
+        "y_m": -2.95,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 100,
+          "logical_pose_before": {
+            "x_m": 0.95,
+            "y_m": -2.95,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.95,
+            "y_m": -3.05,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.95,
+        "y_m": -3.05,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:18:57.766+00:00"
+    },
+    {
+      "sequence": 22,
+      "status": "completed",
+      "started_at": "2026-07-22T13:19:58.116+00:00",
+      "logical_pose_before": {
+        "x_m": 0.95,
+        "y_m": -3.05,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 0.7,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 700,
+          "logical_pose_before": {
+            "x_m": 0.95,
+            "y_m": -3.05,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.25,
+            "y_m": -3.05,
+            "theta_deg": 270.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.25,
+        "y_m": -3.05,
+        "theta_deg": 270.0
+      },
+      "finished_at": "2026-07-22T13:20:04.641+00:00"
+    },
+    {
+      "sequence": 23,
+      "status": "completed",
+      "started_at": "2026-07-22T13:20:34.040+00:00",
+      "logical_pose_before": {
+        "x_m": 0.25,
+        "y_m": -3.05,
+        "theta_deg": 270.0
+      },
+      "requested": {
+        "direction_deg_relative": 180.0,
+        "distance_m": 0.55,
+        "rotation_deg_ccw": -90.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 180.0,
+          "direction_rad": 3.141592653589793,
+          "distance_mm": 550,
+          "logical_pose_before": {
+            "x_m": 0.25,
+            "y_m": -3.05,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.25,
+            "y_m": -2.5,
+            "theta_deg": 270.0
+          }
+        },
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 0.25,
+            "y_m": -2.5,
+            "theta_deg": 270.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.25,
+            "y_m": -2.5,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.25,
+        "y_m": -2.5,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:20:40.473+00:00"
+    },
+    {
+      "sequence": 24,
+      "status": "completed",
+      "started_at": "2026-07-22T13:21:01.380+00:00",
+      "logical_pose_before": {
+        "x_m": 0.25,
+        "y_m": -2.5,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 1.45,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 1450,
+          "logical_pose_before": {
+            "x_m": 0.25,
+            "y_m": -2.5,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.25,
+            "y_m": -1.05,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.25,
+        "y_m": -1.05,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:21:14.313+00:00"
+    },
+    {
+      "sequence": 25,
+      "status": "completed",
+      "started_at": "2026-07-22T13:21:45.203+00:00",
+      "logical_pose_before": {
+        "x_m": 0.25,
+        "y_m": -1.05,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 270.0,
+        "distance_m": 0.95,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 270.0,
+          "direction_rad": -1.5707963267948966,
+          "distance_mm": 950,
+          "logical_pose_before": {
+            "x_m": 0.25,
+            "y_m": -1.05,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.25,
+            "y_m": -0.1,
+            "theta_deg": 180.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.25,
+        "y_m": -0.1,
+        "theta_deg": 180.0
+      },
+      "finished_at": "2026-07-22T13:21:52.702+00:00"
+    },
+    {
+      "sequence": 26,
+      "status": "completed",
+      "started_at": "2026-07-22T13:22:18.036+00:00",
+      "logical_pose_before": {
+        "x_m": 0.25,
+        "y_m": -0.1,
+        "theta_deg": 180.0
+      },
+      "requested": {
+        "direction_deg_relative": 0.0,
+        "distance_m": 0.25,
+        "rotation_deg_ccw": 180.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 0.0,
+          "direction_rad": 0.0,
+          "distance_mm": 250,
+          "logical_pose_before": {
+            "x_m": 0.25,
+            "y_m": -0.1,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.0,
+            "y_m": -0.1,
+            "theta_deg": 180.0
+          }
+        },
+        {
+          "type": "rotate",
+          "method": "move_by_with_pose_feedback",
+          "move_mode": 1,
+          "direction_rad": -3.141592653589793,
+          "distance_mm": 0,
+          "logical_pose_before": {
+            "x_m": 0.0,
+            "y_m": -0.1,
+            "theta_deg": 180.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.0,
+            "y_m": -0.1,
+            "theta_deg": 0.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.0,
+        "y_m": -0.1,
+        "theta_deg": 0.0
+      },
+      "finished_at": "2026-07-22T13:22:30.802+00:00"
+    },
+    {
+      "sequence": 27,
+      "status": "planned",
+      "started_at": "2026-07-26T07:05:40.886Z",
+      "logical_pose_before": {
+        "x_m": 0.0,
+        "y_m": -0.1,
+        "theta_deg": 0.0
+      },
+      "requested": {
+        "direction_deg_relative": 90.0,
+        "distance_m": 0.1,
+        "rotation_deg_ccw": 0.0
+      },
+      "commands": [
+        {
+          "type": "translate",
+          "method": "move_by",
+          "move_mode": 0,
+          "direction_deg_relative": 90.0,
+          "direction_rad": 1.5707963267948966,
+          "distance_mm": 100,
+          "logical_pose_before": {
+            "x_m": 0.0,
+            "y_m": -0.1,
+            "theta_deg": 0.0
+          },
+          "logical_pose_after": {
+            "x_m": 0.0,
+            "y_m": 0.0,
+            "theta_deg": 0.0
+          }
+        }
+      ],
+      "logical_expected_pose_after": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "finished_at": "2026-07-26T07:05:40.886Z"
+    }
+  ],
+  "execution_defaults": {
+    "host": "192.168.11.10",
+    "port": 9090,
+    "linear_speed_mps": 0.2,
+    "angular_speed_radps": 0.0
+  },
+  "recording_mode": "execute",
+  "map_context": {
+    "current_map_response": {
+      "request_id": "req-1784725520490-19229",
+      "success": true,
+      "error_code": 0,
+      "info": "Success",
+      "map_name": "/opt/config/custom/bslam/map/scan_map/emergency.pcd",
+      "message": "Success"
+    },
+    "initial_map_pose": {
+      "x_m": -0.09802452474832535,
+      "y_m": 1.0524253845214844,
+      "yaw_rad": 0.007430564146488905
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "robot": "TienYi2Pro",
+  "camera": {
+    "name": "ob_camera_head",
+    "station_key": "camera",
+    "image_size": [1280, 720]
+  },
+  "depth": {
+    "unit": "millimetre",
+    "scale_to_m": 0.001,
+    "valid_range_m": [0.1, 10.0],
+    "fallback_radii_px": [2, 4, 8, 12],
+    "fallback_min_valid": 3
+  },
+  "intrinsics": {
+    "model": "Brown-Conrady",
+    "fx": 690.2113037109375,
+    "fy": 690.48046875,
+    "cx": 641.4384765625,
+    "cy": 359.41119384765625,
+    "dist_coeffs": [
+      0.007450269069522619,
+      -0.04273116588592529,
+      -0.00011897174408659339,
+      -0.00046132755232974887,
+      0.029539000242948532
+    ]
+  },
+  "extrinsic": {
+    "calibration_date": "2026-07-03",
+    "source_frame": "camera_optical",
+    "target_frame": "head_roll_link",
+    "direction": "T_head_roll_link_camera_optical",
+    "length_unit": "metre",
+    "matrix": [
+      [-0.0012538661190887388, -0.23908158142502464, 0.9709986741716311, 0.06566879834528774],
+      [-0.9999989283988017, 0.0010335217940437872, -0.0010368384399139215, 0.01509146246237864],
+      [-0.0007556593178470739, -0.9709989337048786, -0.23908262112287615, 0.07346138216547525],
+      [0.0, 0.0, 0.0, 1.0]
+    ]
+  },
+  "kinematics": {
+    "zero_waist_yaw_origin_base_m": [0.0, 0.0, 0.9767],
+    "joint_chain": [
+      {
+        "name": "first_leg_pitch_joint",
+        "parent": "base",
+        "child": "first_leg_pitch_link",
+        "axis": [0.0, 1.0, 0.0],
+        "origin_xyz_m": [0.0, 0.0, 0.2805],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      },
+      {
+        "name": "second_leg_pitch_joint",
+        "parent": "first_leg_pitch_link",
+        "child": "second_leg_pitch_link",
+        "axis": [0.0, 1.0, 0.0],
+        "origin_xyz_m": [0.0, 0.0, 0.24],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      },
+      {
+        "name": "waist_pitch_joint",
+        "parent": "second_leg_pitch_link",
+        "child": "waist_pitch_link",
+        "axis": [0.0, 1.0, 0.0],
+        "origin_xyz_m": [0.0, 0.0, 0.35],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      },
+      {
+        "name": "waist_yaw_joint",
+        "parent": "waist_pitch_link",
+        "child": "waist_yaw_link",
+        "axis": [0.0, 0.0, 1.0],
+        "origin_xyz_m": [0.0, 0.0, 0.1062],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      },
+      {
+        "name": "head_yaw_joint",
+        "parent": "waist_yaw_link",
+        "child": "head_yaw_link",
+        "axis": [0.0, 0.0, 1.0],
+        "origin_xyz_m": [-0.0019183, 0.000017471, 0.57118],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      },
+      {
+        "name": "head_pitch_joint",
+        "parent": "head_yaw_link",
+        "child": "head_pitch_link",
+        "axis": [0.0, 1.0, 0.0],
+        "origin_xyz_m": [0.01455, 0.000018827, 0.0304],
+        "origin_rpy_rad": [0.0, 0.2618, 0.0]
+      },
+      {
+        "name": "head_roll_joint",
+        "parent": "head_pitch_link",
+        "child": "head_roll_link",
+        "axis": [1.0, 0.0, 0.0],
+        "origin_xyz_m": [0.0, 0.0, 0.0],
+        "origin_rpy_rad": [0.0, 0.0, 0.0]
+      }
+    ]
+  }
+}

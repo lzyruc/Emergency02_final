@@ -1,0 +1,290 @@
+{
+  "schema_version": 4,
+  "kind": "xrocs.move_by_route",
+  "created_at": "2026-08-14T00:28:27.355+00:00",
+  "updated_at": "2026-08-14T00:28:27.355+00:00",
+  "coordinate_systems": {
+    "logical": {
+      "frame": "gui_scene",
+      "x_axis": "forward",
+      "y_axis": "left",
+      "theta": "degrees_counterclockwise_0_to_359",
+      "initial_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      }
+    },
+    "observed": {
+      "frame": "chassis_map",
+      "source": "GET /api/core/navigation/v1/pose",
+      "yaw": "radians_counterclockwise"
+    }
+  },
+  "motion_order": "translate_then_rotate",
+  "points": [
+    {
+      "sequence": 0,
+      "name": "startpoint",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 1
+    },
+    {
+      "sequence": 1,
+      "name": "h270_track_turn_1",
+      "logical_pose": {
+        "x_m": 1.85,
+        "y_m": 0.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 2
+    },
+    {
+      "sequence": 2,
+      "name": "h0_track_turn_2",
+      "logical_pose": {
+        "x_m": 1.85,
+        "y_m": -0.78,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 3
+    },
+    {
+      "sequence": 3,
+      "name": "h0_track_end",
+      "logical_pose": {
+        "x_m": 4.55,
+        "y_m": -0.78,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 4
+    },
+    {
+      "sequence": 4,
+      "name": "h270_task2_start",
+      "logical_pose": {
+        "x_m": 4.72,
+        "y_m": -2.13,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 5
+    },
+    {
+      "sequence": 5,
+      "name": "h270_window1_turn",
+      "logical_pose": {
+        "x_m": 4.55,
+        "y_m": -3.31,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 6
+    },
+    {
+      "sequence": 6,
+      "name": "h270_window1_action",
+      "logical_pose": {
+        "x_m": 3.745,
+        "y_m": -3.31,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 7
+    },
+    {
+      "sequence": 7,
+      "name": "h270_task2_check",
+      "logical_pose": {
+        "x_m": 2.25,
+        "y_m": -2.15,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 8
+    },
+    {
+      "sequence": 8,
+      "name": "h270_task2_turn",
+      "logical_pose": {
+        "x_m": 1.053763440860215,
+        "y_m": -2.4552688172043013,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 9
+    },
+    {
+      "sequence": 9,
+      "name": "h270_window2_action",
+      "logical_pose": {
+        "x_m": 0.9463,
+        "y_m": -3.1827,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 10
+    },
+    {
+      "sequence": 10,
+      "name": "h270_task3_return",
+      "logical_pose": {
+        "x_m": 0.42,
+        "y_m": -1.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 11
+    },
+    {
+      "sequence": 11,
+      "name": "h270_task3_check",
+      "logical_pose": {
+        "x_m": 0.0425,
+        "y_m": -3.0965,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 12
+    },
+    {
+      "sequence": 12,
+      "name": "h270_task3_right",
+      "logical_pose": {
+        "x_m": 0.484708,
+        "y_m": -2.993273,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 14
+    },
+    {
+      "sequence": 13,
+      "name": "h270_task3_left",
+      "logical_pose": {
+        "x_m": 0.3538,
+        "y_m": -3.1807,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 15
+    },
+    {
+      "sequence": 14,
+      "name": "h270_task3_back",
+      "logical_pose": {
+        "x_m": 0.4538,
+        "y_m": -3.1807,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 16
+    },
+    {
+      "sequence": 15,
+      "name": "h270_task3_place",
+      "logical_pose": {
+        "x_m": -0.1,
+        "y_m": -1.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 17
+    },
+    {
+      "sequence": 16,
+      "name": "h270_task3_finish",
+      "logical_pose": {
+        "x_m": 0.7,
+        "y_m": -1.9,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 18
+    },
+    {
+      "sequence": 17,
+      "name": "box_point",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": -0.3,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 20
+    }
+  ],
+  "actions": [],
+  "scene_editor": {
+    "source_file": "/Users/mac/X-humanoid/Emergency02/config/scene.json",
+    "scene_width_m": 5.88,
+    "scene_height_m": 5.76,
+    "origin_x_offset": -0.4616129032258057,
+    "obstacles": [
+      {
+        "x1": 0.8183870967741943,
+        "y1": -4.06741935483871,
+        "x2": 1.4983870967741941,
+        "y2": -3.96741935483871,
+        "name": "win_right"
+      },
+      {
+        "x1": 3.6583870967741943,
+        "y1": -4.06741935483871,
+        "x2": 4.348387096774194,
+        "y2": -3.96741935483871,
+        "name": "win_left"
+      },
+      {
+        "x1": 1.5383870967741942,
+        "y1": -3.96741935483871,
+        "x2": 2.7383870967741943,
+        "y2": -3.13741935483871,
+        "name": "table_between_wins"
+      },
+      {
+        "x1": 3.418387096774194,
+        "y1": -2.7474193548387102,
+        "x2": 4.218387096774194,
+        "y2": -1.54741935483871,
+        "name": "table_task1"
+      },
+      {
+        "x1": 2.663387096774194,
+        "y1": -0.27741935483871005,
+        "x2": 4.248387096774194,
+        "y2": 0.9225806451612897,
+        "name": "table_far"
+      },
+      {
+        "x1": 0.5383870967741943,
+        "y1": 0.53258064516129,
+        "x2": 2.1383870967741943,
+        "y2": 1.7325806451612902,
+        "name": "table_near"
+      }
+    ],
+    "preserves_connection_actions": false,
+    "coordinate_note": "robots.x/y are imported directly as logical metres; originXOffset is editor display metadata and is not added to coordinates"
+  },
+  "map_context": {
+    "current_map_response": {
+      "map_name": "/opt/config/custom/bslam/map/scan_map/game-emergency.pcd"
+    },
+    "initial_map_pose": {
+      "x_m": 0.34,
+      "y_m": -1.39,
+      "yaw_rad": 0.13962634015954636
+    },
+    "anchor_node": "startpoint",
+    "captured_at": "2026-08-14T00:28:27.355+00:00"
+  }
+}

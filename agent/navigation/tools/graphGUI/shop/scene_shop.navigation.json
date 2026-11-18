@@ -1,0 +1,539 @@
+{
+  "schema_version": 4,
+  "kind": "xrocs.move_by_route",
+  "created_at": "2026-07-26T13:01:20.710+00:00",
+  "updated_at": "2026-07-26T13:01:20.710+00:00",
+  "coordinate_systems": {
+    "logical": {
+      "frame": "gui_scene",
+      "x_axis": "forward",
+      "y_axis": "left",
+      "theta": "degrees_counterclockwise_0_to_359",
+      "initial_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      }
+    },
+    "observed": {
+      "frame": "chassis_map",
+      "source": "GET /api/core/navigation/v1/pose",
+      "yaw": "radians_counterclockwise"
+    }
+  },
+  "motion_order": "translate_then_rotate",
+  "points": [
+    {
+      "sequence": 0,
+      "name": "start_point",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 1
+    },
+    {
+      "sequence": 1,
+      "name": "hub_left",
+      "logical_pose": {
+        "x_m": 0.7,
+        "y_m": 2.4,
+        "theta_deg": 180.0
+      },
+      "before_action": 0,
+      "source_id": 5
+    },
+    {
+      "sequence": 2,
+      "name": "recognize_left",
+      "logical_pose": {
+        "x_m": 0.5,
+        "y_m": 2.4,
+        "theta_deg": 180.0
+      },
+      "before_action": 0,
+      "source_id": 7
+    },
+    {
+      "sequence": 3,
+      "name": "recognize_right",
+      "logical_pose": {
+        "x_m": 0.5,
+        "y_m": -2.4,
+        "theta_deg": 180.0
+      },
+      "before_action": 0,
+      "source_id": 8
+    },
+    {
+      "sequence": 4,
+      "name": "left1",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 48
+    },
+    {
+      "sequence": 5,
+      "name": "left2",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 49
+    },
+    {
+      "sequence": 6,
+      "name": "left3",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 50
+    },
+    {
+      "sequence": 7,
+      "name": "left4",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 51
+    },
+    {
+      "sequence": 8,
+      "name": "left5",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 52
+    },
+    {
+      "sequence": 9,
+      "name": "left6",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": 2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 53
+    },
+    {
+      "sequence": 10,
+      "name": "left7",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 55
+    },
+    {
+      "sequence": 11,
+      "name": "left8",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 56
+    },
+    {
+      "sequence": 12,
+      "name": "left9",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 57
+    },
+    {
+      "sequence": 13,
+      "name": "left10",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 58
+    },
+    {
+      "sequence": 14,
+      "name": "left11",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 59
+    },
+    {
+      "sequence": 15,
+      "name": "left12",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": 2.4,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 60
+    },
+    {
+      "sequence": 16,
+      "name": "right1",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 62
+    },
+    {
+      "sequence": 17,
+      "name": "right2",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 63
+    },
+    {
+      "sequence": 18,
+      "name": "right3",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 64
+    },
+    {
+      "sequence": 19,
+      "name": "right4",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 65
+    },
+    {
+      "sequence": 20,
+      "name": "right5",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 66
+    },
+    {
+      "sequence": 21,
+      "name": "right6",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": -2.0,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 67
+    },
+    {
+      "sequence": 22,
+      "name": "right12",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 68
+    },
+    {
+      "sequence": 23,
+      "name": "right11",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 69
+    },
+    {
+      "sequence": 24,
+      "name": "right10",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 70
+    },
+    {
+      "sequence": 25,
+      "name": "right9",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 71
+    },
+    {
+      "sequence": 26,
+      "name": "right8",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 72
+    },
+    {
+      "sequence": 27,
+      "name": "right7",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": -2.4,
+        "theta_deg": 90.0
+      },
+      "before_action": 0,
+      "source_id": 73
+    },
+    {
+      "sequence": 28,
+      "name": "center1",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 74
+    },
+    {
+      "sequence": 29,
+      "name": "center2",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 75
+    },
+    {
+      "sequence": 30,
+      "name": "center3",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 76
+    },
+    {
+      "sequence": 31,
+      "name": "center4",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 77
+    },
+    {
+      "sequence": 32,
+      "name": "center5",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 78
+    },
+    {
+      "sequence": 33,
+      "name": "center6",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 79
+    },
+    {
+      "sequence": 34,
+      "name": "center12",
+      "logical_pose": {
+        "x_m": 2.9,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 80
+    },
+    {
+      "sequence": 35,
+      "name": "center11",
+      "logical_pose": {
+        "x_m": 2.6,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 81
+    },
+    {
+      "sequence": 36,
+      "name": "center10",
+      "logical_pose": {
+        "x_m": 2.3,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 82
+    },
+    {
+      "sequence": 37,
+      "name": "center9",
+      "logical_pose": {
+        "x_m": 1.9,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 83
+    },
+    {
+      "sequence": 38,
+      "name": "center8",
+      "logical_pose": {
+        "x_m": 1.6,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 84
+    },
+    {
+      "sequence": 39,
+      "name": "center7",
+      "logical_pose": {
+        "x_m": 1.3,
+        "y_m": -0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 85
+    },
+    {
+      "sequence": 40,
+      "name": "hub_center",
+      "logical_pose": {
+        "x_m": 0.7,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 87
+    },
+    {
+      "sequence": 41,
+      "name": "hub_right",
+      "logical_pose": {
+        "x_m": 0.7,
+        "y_m": -2.4,
+        "theta_deg": 180.0
+      },
+      "before_action": 0,
+      "source_id": 88
+    },
+    {
+      "sequence": 42,
+      "name": "center_link",
+      "logical_pose": {
+        "x_m": 0.7,
+        "y_m": 0.2,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 89
+    }
+  ],
+  "actions": [],
+  "scene_editor": {
+    "source_file": "/Users/mac/X-humanoid/agent/navigation/tools/graphGUI/shop/scene_shop.json",
+    "scene_width_m": 6,
+    "scene_height_m": 4,
+    "origin_x_offset": 0.55,
+    "obstacles": [
+      {
+        "x1": -0.55,
+        "y1": 1.8,
+        "x2": 0.25,
+        "y2": 3,
+        "name": "desk_left"
+      },
+      {
+        "x1": -0.55,
+        "y1": -3,
+        "x2": 0.25,
+        "y2": -1.8,
+        "name": "desk_right"
+      },
+      {
+        "x1": 1.15,
+        "y1": 0.7,
+        "x2": 3.05,
+        "y2": 1.5,
+        "name": "shelf_left"
+      },
+      {
+        "x1": 1.15,
+        "y1": -1.5,
+        "x2": 3.05,
+        "y2": -0.7,
+        "name": "shelf_right"
+      }
+    ],
+    "preserves_connection_actions": false,
+    "coordinate_note": "robots.x/y are imported directly as logical metres; originXOffset is editor display metadata and is not added to coordinates"
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "version": "2.2-final-point19-actions",
+  "coordSystem": "xy-standard",
+  "sceneW": 6.1,
+  "sceneH": 5.51,
+  "originLeft": 0.56,
+  "originBottom": 3.4,
+  "bounds": {
+    "minX": -0.56,
+    "maxX": 5.539999999999999,
+    "minY": -3.4,
+    "maxY": 2.11
+  },
+  "obstacles": [
+    {
+      "name": "障碍物1（左上）",
+      "x1": 3.84,
+      "y1": -0.55,
+      "x2": 4.54,
+      "y2": 0.65
+    },
+    {
+      "name": "障碍物2（右上）",
+      "x1": 3.52,
+      "y1": -2.87,
+      "x2": 4.32,
+      "y2": -1.67
+    },
+    {
+      "name": "障碍物3（左下）",
+      "x1": 0.86,
+      "y1": 0.52,
+      "x2": 2.46,
+      "y2": 1.72
+    },
+    {
+      "name": "障碍物4（右下）",
+      "x1": 1.9,
+      "y1": -3.4,
+      "x2": 3.1,
+      "y2": -2
+    }
+  ],
+  "robots": [
+    {
+      "id": 1,
+      "x": 0.0,
+      "y": 0.0,
+      "angle": 0.0,
+      "name": "startpoint"
+    },
+    {
+      "id": 2,
+      "x": 2.0,
+      "y": 0.0,
+      "angle": 0.0,
+      "name": "h0_track_turn_1"
+    },
+    {
+      "id": 3,
+      "x": 2.0,
+      "y": 0.0,
+      "angle": 270.0,
+      "name": "h270_track_turn_1"
+    },
+    {
+      "id": 4,
+      "x": 2.0,
+      "y": -1.0,
+      "angle": 270.0,
+      "name": "h270_track_turn_2"
+    },
+    {
+      "id": 5,
+      "x": 2.0,
+      "y": -1.0,
+      "angle": 0.0,
+      "name": "h0_track_turn_2"
+    },
+    {
+      "id": 6,
+      "x": 4.8,
+      "y": -1.0,
+      "angle": 0.0,
+      "name": "h0_track_end"
+    },
+    {
+      "id": 7,
+      "x": 4.8,
+      "y": -1.0,
+      "angle": 270.0,
+      "name": "h270_track_end"
+    },
+    {
+      "id": 8,
+      "x": 4.8,
+      "y": -2.0,
+      "angle": 270.0,
+      "name": "h270_task2_start"
+    },
+    {
+      "id": 9,
+      "x": 4.8,
+      "y": -3.15,
+      "angle": 270.0,
+      "name": "h270_window1_turn"
+    },
+    {
+      "id": 12,
+      "x": 3.68,
+      "y": -3.15,
+      "angle": 270.0,
+      "name": "h270_window1_action"
+    },
+    {
+      "id": 13,
+      "x": 2.2,
+      "y": -1.0,
+      "angle": 270.0,
+      "name": "h270_transfer_point"
+    },
+    {
+      "id": 14,
+      "x": 2.2,
+      "y": -2.1,
+      "angle": 270.0,
+      "name": "h270_task2_check"
+    },
+    {
+      "id": 15,
+      "x": 0.95,
+      "y": -2.1,
+      "angle": 270.0,
+      "name": "h270_window2_turn"
+    },
+    {
+      "id": 16,
+      "x": 0.95,
+      "y": -2.889564,
+      "angle": 270.0,
+      "name": "h270_window2_action"
+    },
+    {
+      "id": 17,
+      "x": 0.097792,
+      "y": -2.723227,
+      "angle": 269.57426,
+      "name": "h270_task3_check"
+    },
+    {
+      "id": 18,
+      "x": 0.54,
+      "y": -2.62,
+      "angle": 270.0,
+      "name": "h270_task3_right"
+    },
+    {
+      "id": 19,
+      "x": 0.376261,
+      "y": -2.930302,
+      "angle": 269.57426,
+      "name": "h270_task3_left"
+    },
+    {
+      "id": 20,
+      "x": 0.42,
+      "y": -2.95,
+      "angle": 270.0,
+      "name": "h270_task3_back"
+    },
+    {
+      "id": 21,
+      "x": 0.42,
+      "y": -0.02,
+      "angle": 270.0,
+      "name": "h270_task3_return"
+    },
+    {
+      "id": 22,
+      "x": 0.09,
+      "y": -0.02,
+      "angle": 270.0,
+      "name": "h270_task3_place"
+    }
+  ],
+  "connections": [
+    {
+      "fromId": 1,
+      "toId": 2,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 2.0,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 2,
+      "toId": 3,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 0.0,
+          "rotation_deg_ccw": -90.0
+        }
+      ]
+    },
+    {
+      "fromId": 3,
+      "toId": 4,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 1.0,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 4,
+      "toId": 5,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 0.0,
+          "rotation_deg_ccw": 90.0
+        }
+      ]
+    },
+    {
+      "fromId": 5,
+      "toId": 6,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 2.8,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 6,
+      "toId": 7,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 0.0,
+          "rotation_deg_ccw": -90.0
+        }
+      ]
+    },
+    {
+      "fromId": 7,
+      "toId": 8,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 1.0,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 7,
+      "toId": 13,
+      "actions": [
+        {
+          "direction_deg_relative": 270.0,
+          "distance_m": 2.5999999999999996,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 8,
+      "toId": 9,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 1.15,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 9,
+      "toId": 12,
+      "actions": [
+        {
+          "direction_deg_relative": 270.0,
+          "distance_m": 1.1199999999999997,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 13,
+      "toId": 14,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 1.1,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 14,
+      "toId": 15,
+      "actions": [
+        {
+          "direction_deg_relative": 270.0,
+          "distance_m": 1.2500000000000002,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 15,
+      "toId": 16,
+      "actions": [
+        {
+          "direction_deg_relative": 0.0,
+          "distance_m": 0.7895639999999999,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 16,
+      "toId": 17,
+      "actions": [
+        {
+          "direction_deg_relative": 258.9556588367608,
+          "distance_m": 0.8682893946334943,
+          "rotation_deg_ccw": -0.4257400000000189
+        }
+      ]
+    },
+    {
+      "fromId": 17,
+      "toId": 18,
+      "actions": [
+        {
+          "direction_deg_relative": 103.56530805187788,
+          "distance_m": 0.454096607334827,
+          "rotation_deg_ccw": 0.4257400000000189
+        }
+      ]
+    },
+    {
+      "fromId": 18,
+      "toId": 19,
+      "actions": [
+        {
+          "direction_deg_relative": 332.18045296525133,
+          "distance_m": 0.35085294829173097,
+          "rotation_deg_ccw": -0.4257400000000189
+        }
+      ]
+    },
+    {
+      "fromId": 19,
+      "toId": 20,
+      "actions": [
+        {
+          "direction_deg_relative": 66.18116640067035,
+          "distance_m": 0.047969900197936594,
+          "rotation_deg_ccw": 0.4257400000000189
+        }
+      ]
+    },
+    {
+      "fromId": 20,
+      "toId": 21,
+      "actions": [
+        {
+          "direction_deg_relative": 180.0,
+          "distance_m": 2.93,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    },
+    {
+      "fromId": 21,
+      "toId": 22,
+      "actions": [
+        {
+          "direction_deg_relative": 270.0,
+          "distance_m": 0.32999999999999996,
+          "rotation_deg_ccw": 0.0
+        }
+      ]
+    }
+  ],
+  "nextRobotId": 23
+}

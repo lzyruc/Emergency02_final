@@ -1,0 +1,1 @@
+"""Competition agent package."""

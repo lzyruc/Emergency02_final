@@ -1,0 +1,309 @@
+{
+  "schema_version": 4,
+  "kind": "xrocs.move_by_route",
+  "created_at": "2026-07-26T13:48:57.158+00:00",
+  "updated_at": "2026-08-17T03:01:26.000+00:00",
+  "coordinate_systems": {
+    "logical": {
+      "frame": "gui_scene",
+      "x_axis": "forward",
+      "y_axis": "left",
+      "theta": "degrees_counterclockwise_0_to_359",
+      "initial_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      }
+    },
+    "observed": {
+      "frame": "chassis_map",
+      "source": "GET /api/core/navigation/v1/pose",
+      "yaw": "radians_counterclockwise"
+    }
+  },
+  "motion_order": "translate_then_rotate",
+  "points": [
+    {
+      "sequence": 0,
+      "name": "startpoint",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 1
+    },
+    {
+      "sequence": 1,
+      "name": "h0_track_turn_1",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 2
+    },
+    {
+      "sequence": 2,
+      "name": "h270_track_turn_1",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": 0.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 3
+    },
+    {
+      "sequence": 3,
+      "name": "h270_track_turn_2",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 4
+    },
+    {
+      "sequence": 4,
+      "name": "h0_track_turn_2",
+      "logical_pose": {
+        "x_m": 2.0,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 5
+    },
+    {
+      "sequence": 5,
+      "name": "h0_track_end",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 6
+    },
+    {
+      "sequence": 6,
+      "name": "h270_track_end",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 7
+    },
+    {
+      "sequence": 7,
+      "name": "h270_task2_start",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -2.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 8
+    },
+    {
+      "sequence": 8,
+      "name": "h270_window1_turn",
+      "logical_pose": {
+        "x_m": 4.8,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 9
+    },
+    {
+      "sequence": 9,
+      "name": "h270_window1_action",
+      "logical_pose": {
+        "x_m": 3.68,
+        "y_m": -3.15,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 12
+    },
+    {
+      "sequence": 10,
+      "name": "h270_transfer_point",
+      "logical_pose": {
+        "x_m": 2.2,
+        "y_m": -1.0,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 13
+    },
+    {
+      "sequence": 11,
+      "name": "h270_task2_check",
+      "logical_pose": {
+        "x_m": 2.2,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 14
+    },
+    {
+      "sequence": 12,
+      "name": "h270_window2_turn",
+      "logical_pose": {
+        "x_m": 0.95,
+        "y_m": -2.1,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 15
+    },
+    {
+      "sequence": 13,
+      "name": "h270_window2_action",
+      "logical_pose": {
+        "x_m": 0.95,
+        "y_m": -2.889564,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 16
+    },
+    {
+      "sequence": 14,
+      "name": "h270_task3_check",
+      "logical_pose": {
+        "x_m": 0.097792,
+        "y_m": -2.723227,
+        "theta_deg": 269.57426
+      },
+      "before_action": 0,
+      "source_id": 17
+    },
+    {
+      "sequence": 15,
+      "name": "h270_task3_right",
+      "logical_pose": {
+        "x_m": 0.54,
+        "y_m": -2.62,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 18
+    },
+    {
+      "sequence": 16,
+      "name": "h270_task3_left",
+      "logical_pose": {
+        "x_m": 0.376261,
+        "y_m": -2.930302,
+        "theta_deg": 269.57426
+      },
+      "before_action": 0,
+      "source_id": 19
+    },
+    {
+      "sequence": 17,
+      "name": "h270_task3_back",
+      "logical_pose": {
+        "x_m": 0.42,
+        "y_m": -2.95,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 20
+    },
+    {
+      "sequence": 18,
+      "name": "h270_task3_return",
+      "logical_pose": {
+        "x_m": 0.42,
+        "y_m": -1.02,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 21
+    },
+    {
+      "sequence": 19,
+      "name": "h270_task3_place",
+      "logical_pose": {
+        "x_m": -0.1,
+        "y_m": -1.02,
+        "theta_deg": 270.0
+      },
+      "before_action": 0,
+      "source_id": 22
+    },
+    {
+      "sequence": 20,
+      "name": "box_point",
+      "logical_pose": {
+        "x_m": 0.0,
+        "y_m": -0.3,
+        "theta_deg": 0.0
+      },
+      "before_action": 0,
+      "source_id": 23
+    }
+  ],
+  "actions": [],
+  "map_context": {
+    "current_map_response": {
+      "map_name": "/opt/config/custom/bslam/map/scan_map/emergency.pcd"
+    },
+    "initial_map_pose": {
+      "x_m": -0.09802452474832535,
+      "y_m": 1.0524253845214844,
+      "yaw_rad": 0.007430564146488905
+    },
+    "anchor_node": "startpoint",
+    "source": "agent/navigation/data/logs/emergency.json"
+  },
+  "scene_editor": {
+    "source_file": "agent/navigation/data/logs/emergency.navigation.scene.json",
+    "scene_width_m": 6.1,
+    "scene_height_m": 5.51,
+    "origin_x_offset": null,
+    "obstacles": [
+      {
+        "name": "障碍物1（左上）",
+        "x1": 3.84,
+        "y1": -0.55,
+        "x2": 4.54,
+        "y2": 0.65
+      },
+      {
+        "name": "障碍物2（右上）",
+        "x1": 3.52,
+        "y1": -2.87,
+        "x2": 4.32,
+        "y2": -1.67
+      },
+      {
+        "name": "障碍物3（左下）",
+        "x1": 0.86,
+        "y1": 0.52,
+        "x2": 2.46,
+        "y2": 1.72
+      },
+      {
+        "name": "障碍物4（右下）",
+        "x1": 1.9,
+        "y1": -3.4,
+        "x2": 3.1,
+        "y2": -2
+      }
+    ],
+    "preserves_connection_actions": true,
+    "coordinate_note": "robots.x/y are imported directly as logical metres; originXOffset is editor display metadata and is not added to coordinates"
+  }
+}

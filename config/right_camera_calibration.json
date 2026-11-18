@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "camera_name": "realcam_right_hand/realcam_right_hand",
+  "station_camera_key": "right",
+  "color_encoding": "bgr",
+  "depth_unit": "mm",
+  "arm_name": "right",
+  "robot_type": "tienyi2_pro",
+  "calibration_type": "hand_camera",
+  "extrinsic_direction": "camera_to_right_tcp_link",
+  "extrinsics_verified": true,
+  "date": "2026-07-31",
+  "image_width": 1280,
+  "image_height": 720,
+  "camera_matrix": [
+    [656.8577880859375, 0.0, 640.323974609375],
+    [0.0, 656.3074951171875, 337.7669677734375],
+    [0.0, 0.0, 1.0]
+  ],
+  "dist_coeffs": [
+    -0.05112307518720627,
+    0.056511782109737396,
+    0.001587152131833136,
+    -3.956818181904964e-05,
+    -0.019094856455922127
+  ],
+  "extrinsics_cam_to_right_tcp_link_matrix": [
+    [-0.9999063629852378, -0.009087811916801115, -0.010231174722319988, 0.00742265837938338],
+    [-0.011395552010673, 0.9669153829802586, 0.25484266430586533, -0.07723563915209142],
+    [0.007576718023381782, 0.2549353914832242, -0.9669284045436299, -0.07534195947289819],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "grasp_offset_right_tcp_m": [0.0, 0.0, 0.12]
+}

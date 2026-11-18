@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>导航场景编辑器 (侧边栏·命名·只读拖动)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #e8edf4;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1600px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 20, 40, 0.12);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a2634;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header h1 small {
+            font-weight: 400;
+            font-size: 14px;
+            color: #5e6f8d;
+        }
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            gap: 12px 20px;
+            margin-bottom: 18px;
+            padding: 14px 18px;
+            background: #f8faff;
+            border-radius: 14px;
+            border: 1px solid #e6edf5;
+        }
+        .toolbar .group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .toolbar .group-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #3d4f66;
+            margin-right: 4px;
+        }
+        .toolbar input[type="number"] {
+            width: 72px;
+            padding: 6px 8px;
+            border: 1px solid #d0d9e8;
+            border-radius: 8px;
+            font-size: 13px;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        .toolbar input[type="number"]:focus {
+            border-color: #4f7df3;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 125, 243, 0.15);
+        }
+        .toolbar button {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #eef2f7;
+            color: #1a2634;
+            white-space: nowrap;
+        }
+        .toolbar button:hover {
+            background: #dce4ef;
+        }
+        .toolbar button.primary {
+            background: #4f7df3;
+            color: #fff;
+        }
+        .toolbar button.primary:hover {
+            background: #3a66d9;
+        }
+        .toolbar button.danger {
+            background: #f16a6a;
+            color: #fff;
+        }
+        .toolbar button.danger:hover {
+            background: #e04a4a;
+        }
+        .toolbar button.success {
+            background: #34c471;
+            color: #fff;
+        }
+        .toolbar button.success:hover {
+            background: #28a85e;
+        }
+        .toolbar button.warning {
+            background: #f5b342;
+            color: #fff;
+        }
+        .toolbar button.warning:hover {
+            background: #e09e2e;
+        }
+        .toolbar button.mode-btn {
+            background: #eef2f7;
+            color: #2c3e50;
+            border: 1px solid transparent;
+        }
+        .toolbar button.mode-btn.active {
+            background: #4f7df3;
+            color: #fff;
+            border-color: #4f7df3;
+            box-shadow: 0 4px 10px rgba(79, 125, 243, 0.25);
+        }
+        .toolbar button.mode-btn.active:hover {
+            background: #3a66d9;
+        }
+        .add-panel {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+            margin-bottom: 16px;
+            padding: 12px 18px;
+            background: #f8faff;
+            border-radius: 14px;
+            border: 1px solid #e6edf5;
+        }
+        .add-panel .field {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .add-panel .field label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #3d4f66;
+        }
+        .add-panel .field input {
+            width: 60px;
+            padding: 4px 6px;
+            border: 1px solid #d0d9e8;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #fff;
+        }
+        .add-panel .field input:focus {
+            border-color: #4f7df3;
+            outline: none;
+        }
+        .add-panel button {
+            padding: 6px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #4f7df3;
+            color: #fff;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .add-panel button:hover {
+            background: #3a66d9;
+        }
+        .add-panel .divider {
+            width: 1px;
+            height: 28px;
+            background: #d0d9e8;
+        }
+        .add-panel.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .main-area {
+            display: flex;
+            gap: 16px;
+        }
+        .canvas-wrapper {
+            flex: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #dce4ef;
+            background: #f0f4fa;
+            position: relative;
+            height: 620px;
+            touch-action: none;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            cursor: crosshair;
+        }
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: #f8faff;
+            border-radius: 16px;
+            border: 1px solid #e6edf5;
+            padding: 12px;
+            overflow-y: auto;
+            max-height: 620px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .sidebar-section {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e6edf5;
+            overflow: hidden;
+        }
+        .sidebar-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: #f0f4fc;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a2634;
+            border-bottom: 1px solid #e6edf5;
+            user-select: none;
+        }
+        .sidebar-section-header:hover {
+            background: #e8edf5;
+        }
+        .sidebar-section-header .badge {
+            background: #4f7df3;
+            color: #fff;
+            border-radius: 12px;
+            padding: 0 10px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .sidebar-section-body {
+            padding: 6px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .sidebar-section-body .empty-msg {
+            padding: 16px;
+            text-align: center;
+            color: #8a9bb0;
+            font-size: 13px;
+        }
+        .item-entry {
+            padding: 6px 12px;
+            border-bottom: 1px solid #f0f4fc;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .item-entry:hover {
+            background: #f4f8ff;
+        }
+        .item-entry:last-child {
+            border-bottom: none;
+        }
+        .item-entry .item-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+        .item-entry .item-summary .name {
+            font-weight: 500;
+            color: #1a2634;
+        }
+        .item-entry .item-summary .coords {
+            color: #5e6f8d;
+            font-size: 12px;
+        }
+        .item-entry .item-detail {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #dce4ef;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .item-entry .item-detail .row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        .item-entry .item-detail .row label {
+            width: 40px;
+            color: #3d4f66;
+            font-weight: 500;
+        }
+        .item-entry .item-detail .row input {
+            flex: 1;
+            padding: 4px 6px;
+            border: 1px solid #d0d9e8;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #fff;
+        }
+        .item-entry .item-detail .row input:focus {
+            border-color: #4f7df3;
+            outline: none;
+        }
+        .item-entry .item-detail .btn-update {
+            background: #4f7df3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .item-entry .item-detail .btn-update:hover {
+            background: #3a66d9;
+        }
+        .item-entry .item-detail .btn-delete {
+            background: #f16a6a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .item-entry .item-detail .btn-delete:hover {
+            background: #e04a4a;
+        }
+        .scene-config {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .scene-config.hidden {
+            display: none;
+        }
+        .reconfig-btn {
+            display: none;
+        }
+        .scene-config.hidden+.reconfig-btn {
+            display: inline-block;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            font-size: 14px;
+            color: #3d4f66;
+            padding: 0 6px;
+        }
+        .status-bar .info {
+            display: flex;
+            gap: 20px;
+            color: #5e6f8d;
+        }
+        .status-bar .info span {
+            background: #f0f4fc;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        .file-input {
+            display: none;
+        }
+        @media (max-width:1100px) {
+            .sidebar {
+                width: 220px;
+            }
+        }
+        @media (max-width:900px) {
+            .main-area {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ 导航场景编辑器 <small>x向右 · y向上 · 原点在左下角</small></h1>
+            <div class="header-actions">
+                <button class="warning" id="resetViewBtn" style="padding:6px 16px;border:none;border-radius:8px;background:#f5b342;color:#fff;font-weight:500;cursor:pointer;">↺ 重置视图</button>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="group">
+                <span class="group-label">📐 场景</span>
+                <div class="scene-config" id="sceneConfig">
+                    <input type="number" id="sceneWidth" value="10" step="0.1" min="0.5" />
+                    <span style="color:#5e6f8d;font-size:13px;">×</span>
+                    <input type="number" id="sceneHeight" value="8" step="0.1" min="0.5" />
+                    <button class="danger" id="initBtn">初始化</button>
+                </div>
+                <button class="primary reconfig-btn" id="reconfigBtn" style="display:none;">⚙️ 重新配置</button>
+            </div>
+            <div class="group">
+                <span class="group-label">✏️ 模式</span>
+                <button class="mode-btn active" data-mode="obstacle">🧱 障碍物</button>
+                <button class="mode-btn" data-mode="robot">🤖 机器人</button>
+                <button class="mode-btn" data-mode="connect">🔗 连接</button>
+                <button class="mode-btn" data-mode="readonly">👁️ 只读</button>
+            </div>
+            <div class="group" style="margin-left:auto;">
+                <button class="success" id="exportBtn">📥 导出</button>
+                <button class="primary" id="importBtn">📤 导入</button>
+                <input type="file" id="fileInput" class="file-input" accept=".json" />
+            </div>
+        </div>
+
+        <!-- 精确添加面板（适配新坐标系） -->
+        <div class="add-panel" id="addPanel">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:500;color:#1a2634;">
+                <span>🎯 精确添加</span>
+            </div>
+            <div class="field">
+                <label>障碍物</label>
+                <span style="font-size:12px;color:#5e6f8d;">x₁(右)</span>
+                <input type="number" id="obsX1" value="0.5" step="0.1" style="width:48px;" />
+                <span style="font-size:12px;color:#5e6f8d;">y₁(上)</span>
+                <input type="number" id="obsY1" value="0.3" step="0.1" style="width:48px;" />
+                <span style="font-size:12px;color:#5e6f8d;">x₂(右)</span>
+                <input type="number" id="obsX2" value="1.5" step="0.1" style="width:48px;" />
+                <span style="font-size:12px;color:#5e6f8d;">y₂(上)</span>
+                <input type="number" id="obsY2" value="0.8" step="0.1" style="width:48px;" />
+                <button id="addObstacleBtn">➕ 添加</button>
+            </div>
+            <div class="divider"></div>
+            <div class="field">
+                <label>机器人</label>
+                <span style="font-size:12px;color:#5e6f8d;">x(右)</span>
+                <input type="number" id="robotX" value="1.0" step="0.1" style="width:48px;" />
+                <span style="font-size:12px;color:#5e6f8d;">y(上)</span>
+                <input type="number" id="robotY" value="1.0" step="0.1" style="width:48px;" />
+                <span style="font-size:12px;color:#5e6f8d;">角度°</span>
+                <input type="number" id="robotAngle" value="0" step="5" style="width:52px;" />
+                <button id="addRobotBtn">🤖 添加</button>
+            </div>
+        </div>
+
+        <!-- 主区域 -->
+        <div class="main-area">
+            <div class="canvas-wrapper" id="canvasWrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="sidebar" id="sidebar">
+                <!-- 障碍物列表 -->
+                <div class="sidebar-section" id="obsSection">
+                    <div class="sidebar-section-header" id="obsHeader">
+                        <span>🧱 障碍物</span>
+                        <span class="badge" id="obsCount">0</span>
+                    </div>
+                    <div class="sidebar-section-body" id="obsList"></div>
+                </div>
+                <!-- 机器人列表 -->
+                <div class="sidebar-section" id="robotSection">
+                    <div class="sidebar-section-header" id="robotHeader">
+                        <span>🤖 机器人</span>
+                        <span class="badge" id="robotCount">0</span>
+                    </div>
+                    <div class="sidebar-section-body" id="robotList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span id="statusMsg">✅ 就绪，请初始化场景或导入数据</span>
+            <div class="info">
+                <span id="scaleInfo">比例尺: -- px/m</span>
+                <span id="coordInfo">鼠标: (-- , --) m</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- 常量 ----------
+            const ROBOT_RADIUS = 7;
+            const ARROW_LENGTH = 16;
+            const HIT_THRESHOLD = 16;
+            // 原点在左下角，x向右，y向上
+
+            // ---------- 状态 ----------
+            const state = {
+                sceneW: 10, // x方向宽度
+                sceneH: 8,  // y方向高度
+                obstacles: [],
+                robots: [],
+                connections: [],
+                nextRobotId: 1,
+                scale: 1,
+                offsetX: 0,
+                offsetY: 0,
+                mode: 'obstacle',
+                selectedRobotId: null,
+                dragTarget: null,
+                isDragging: false,
+                isPanning: false,
+                panStartX: 0,
+                panStartY: 0,
+                panOffsetX: 0,
+                panOffsetY: 0,
+            };
+
+            // DOM
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const wrapper = document.getElementById('canvasWrapper');
+            const statusMsg = document.getElementById('statusMsg');
+            const scaleInfo = document.getElementById('scaleInfo');
+            const coordInfo = document.getElementById('coordInfo');
+            const addPanel = document.getElementById('addPanel');
+
+            const widthInput = document.getElementById('sceneWidth');
+            const heightInput = document.getElementById('sceneHeight');
+            const initBtn = document.getElementById('initBtn');
+            const reconfigBtn = document.getElementById('reconfigBtn');
+            const sceneConfig = document.getElementById('sceneConfig');
+            const resetViewBtn = document.getElementById('resetViewBtn');
+            const modeBtns = document.querySelectorAll('.mode-btn');
+            const exportBtn = document.getElementById('exportBtn');
+            const importBtn = document.getElementById('importBtn');
+            const fileInput = document.getElementById('fileInput');
+
+            const obsX1 = document.getElementById('obsX1');
+            const obsY1 = document.getElementById('obsY1');
+            const obsX2 = document.getElementById('obsX2');
+            const obsY2 = document.getElementById('obsY2');
+            const addObstacleBtn = document.getElementById('addObstacleBtn');
+            const robotX = document.getElementById('robotX');
+            const robotY = document.getElementById('robotY');
+            const robotAngle = document.getElementById('robotAngle');
+            const addRobotBtn = document.getElementById('addRobotBtn');
+
+            const obsList = document.getElementById('obsList');
+            const robotList = document.getElementById('robotList');
+            const obsCount = document.getElementById('obsCount');
+            const robotCount = document.getElementById('robotCount');
+
+            // ---------- DPI ----------
+            let dpr = 1;
+
+            function setupCanvas() {
+                const rect = wrapper.getBoundingClientRect();
+                const cssW = rect.width,
+                    cssH = rect.height;
+                dpr = window.devicePixelRatio || 1;
+                canvas.width = cssW * dpr;
+                canvas.height = cssH * dpr;
+                canvas.style.width = cssW + 'px';
+                canvas.style.height = cssH + 'px';
+                ctx.scale(dpr, dpr);
+                canvas._cssWidth = cssW;
+                canvas._cssHeight = cssH;
+            }
+
+            // ---------- 坐标转换（x向右，y向上，原点左下角） ----------
+            function worldToScreen(wx, wy) {
+                const sx = wx * state.scale + state.offsetX;
+                const sy = (state.sceneH - wy) * state.scale + state.offsetY;
+                return { x: sx, y: sy };
+            }
+
+            function screenToWorld(sx, sy) {
+                const wx = (sx - state.offsetX) / state.scale;
+                const wy = state.sceneH - (sy - state.offsetY) / state.scale;
+                return { x: wx, y: wy };
+            }
+
+            // 边界裁剪（x: 0~sceneW, y: 0~sceneH）
+            function clampWorld(x, y, margin) {
+                margin = margin || 0.05;
+                const xMin = margin;
+                const xMax = state.sceneW - margin;
+                const yMin = margin;
+                const yMax = state.sceneH - margin;
+                return {
+                    x: Math.min(Math.max(x, xMin), xMax),
+                    y: Math.min(Math.max(y, yMin), yMax)
+                };
+            }
+
+            function normalizeRect(x1, y1, x2, y2) {
+                return { x1: Math.min(x1, x2), y1: Math.min(y1, y2), x2: Math.max(x1, x2), y2: Math.max(y1, y2) };
+            }
+
+            function normalizeAngle(deg) {
+                deg = deg % 360;
+                if (deg < 0) deg += 360;
+                return deg;
+            }
+
+            function genObsName() {
+                const count = state.obstacles.length + 1;
+                return `障碍物${count}`;
+            }
+
+            function genRobotName() {
+                const count = state.robots.length + 1;
+                return `机器人${count}`;
+            }
+
+            // ---------- 渲染 ----------
+            function render() {
+                const W = canvas._cssWidth;
+                const H = canvas._cssHeight;
+                ctx.clearRect(0, 0, W, H);
+                ctx.fillStyle = '#f0f4fa';
+                ctx.fillRect(0, 0, W, H);
+
+                // --- 坐标轴（原点在左下角，x向右，y向上） ---
+                const origin = worldToScreen(0, 0);
+                const axisLen = Math.min(50, 25 * state.scale);
+
+                // x轴 (向右)
+                ctx.beginPath();
+                ctx.moveTo(origin.x, origin.y);
+                ctx.lineTo(origin.x + axisLen, origin.y);
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(origin.x + axisLen, origin.y);
+                ctx.lineTo(origin.x + axisLen - 7, origin.y - 5);
+                ctx.lineTo(origin.x + axisLen - 7, origin.y + 5);
+                ctx.closePath();
+                ctx.fillStyle = '#2c3e50';
+                ctx.fill();
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '13px sans-serif';
+                ctx.fillText('x (右)', origin.x + axisLen - 30, origin.y - 8);
+
+                // y轴 (向上)
+                ctx.beginPath();
+                ctx.moveTo(origin.x, origin.y);
+                ctx.lineTo(origin.x, origin.y - axisLen);
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(origin.x, origin.y - axisLen);
+                ctx.lineTo(origin.x - 5, origin.y - axisLen + 7);
+                ctx.lineTo(origin.x + 5, origin.y - axisLen + 7);
+                ctx.closePath();
+                ctx.fillStyle = '#2c3e50';
+                ctx.fill();
+                ctx.fillStyle = '#2c3e50';
+                ctx.fillText('y (上)', origin.x + 8, origin.y - axisLen - 6);
+
+                // 原点标注
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '13px sans-serif';
+                ctx.fillText('O (0,0)', origin.x + 6, origin.y + 22);
+
+                // --- 刻度（从原点开始，x向右，y向上） ---
+                ctx.font = '11px sans-serif';
+                ctx.fillStyle = '#4a5b72';
+
+                // x轴刻度（沿y=0线，从0到sceneW，步长0.5）
+                const xStart = 0;
+                const xEnd = state.sceneW;
+                for (let wx = xStart; wx <= xEnd; wx += 0.5) {
+                    if (Math.abs(wx) < 0.01) continue;
+                    const p = worldToScreen(wx, 0);
+                    if (p.x > 10 && p.x < W - 10) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, origin.y - 5);
+                        ctx.lineTo(p.x, origin.y + 5);
+                        ctx.strokeStyle = '#8a9bb0';
+                        ctx.lineWidth = 1.2;
+                        ctx.stroke();
+                        ctx.fillStyle = '#4a5b72';
+                        ctx.fillText(wx.toFixed(1), p.x - 10, origin.y + 18);
+                    }
+                }
+
+                // y轴刻度（沿x=0线，从0到sceneH，步长0.5）
+                const yStart = 0;
+                const yEnd = state.sceneH;
+                for (let wy = yStart; wy <= yEnd; wy += 0.5) {
+                    if (Math.abs(wy) < 0.01) continue;
+                    const p = worldToScreen(0, wy);
+                    if (p.y > 10 && p.y < H - 10) {
+                        ctx.beginPath();
+                        ctx.moveTo(origin.x - 5, p.y);
+                        ctx.lineTo(origin.x + 5, p.y);
+                        ctx.strokeStyle = '#8a9bb0';
+                        ctx.lineWidth = 1.2;
+                        ctx.stroke();
+                        ctx.fillStyle = '#4a5b72';
+                        ctx.fillText(wy.toFixed(1), origin.x - 32, p.y + 4);
+                    }
+                }
+
+                // 边界（世界坐标边界：x 0~sceneW, y 0~sceneH）
+                const tl = worldToScreen(0, state.sceneH);
+                const br = worldToScreen(state.sceneW, 0);
+                ctx.strokeStyle = '#1a2634';
+                ctx.lineWidth = 2.5;
+                ctx.strokeRect(tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+
+                // 障碍物
+                state.obstacles.forEach(obs => {
+                    const p1 = worldToScreen(obs.x1, obs.y1);
+                    const p2 = worldToScreen(obs.x2, obs.y2);
+                    const w = p2.x - p1.x,
+                        h = p2.y - p1.y;
+                    ctx.fillStyle = '#c8d6e5';
+                    ctx.fillRect(p1.x, p1.y, w, h);
+                    ctx.strokeStyle = '#5f7a9a';
+                    ctx.lineWidth = 1.8;
+                    ctx.strokeRect(p1.x, p1.y, w, h);
+                    ctx.fillStyle = '#2c3e50';
+                    ctx.font = '11px sans-serif';
+                    ctx.fillText(obs.name || '障碍物', p1.x + 3, p1.y + 14);
+                    ctx.fillStyle = '#4a5b72';
+                    ctx.font = '10px sans-serif';
+                    ctx.fillText(`(${obs.x1.toFixed(2)},${obs.y1.toFixed(2)})`, p1.x + 3, p1.y + 28);
+                });
+
+                // 连接线
+                state.connections.forEach(conn => {
+                    const from = state.robots.find(r => r.id === conn.fromId);
+                    const to = state.robots.find(r => r.id === conn.toId);
+                    if (from && to) {
+                        const p1 = worldToScreen(from.x, from.y);
+                        const p2 = worldToScreen(to.x, to.y);
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = '#4f7df3';
+                        ctx.lineWidth = 2.5;
+                        ctx.setLineDash([7, 5]);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                        const mx = (p1.x + p2.x) / 2,
+                            my = (p1.y + p2.y) / 2;
+                        ctx.fillStyle = '#4f7df3';
+                        ctx.font = '13px sans-serif';
+                        ctx.fillText('1', mx - 7, my - 7);
+                    }
+                });
+
+                // 机器人
+                state.robots.forEach(robot => {
+                    const pos = worldToScreen(robot.x, robot.y);
+                    const cx = pos.x,
+                        cy = pos.y;
+                    const angleRad = (robot.angle + 90) * Math.PI / 180;
+                    ctx.shadowColor = 'rgba(0,0,0,0.08)';
+                    ctx.shadowBlur = 8;
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, ROBOT_RADIUS, 0, 2 * Math.PI);
+                    ctx.fillStyle = '#e74c3c';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                    ctx.strokeStyle = '#c0392b';
+                    ctx.lineWidth = 1.8;
+                    ctx.stroke();
+                    const endX = cx + ARROW_LENGTH * Math.cos(angleRad);
+                    const endY = cy - ARROW_LENGTH * Math.sin(angleRad);
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.lineTo(endX, endY);
+                    ctx.strokeStyle = '#e74c3c';
+                    ctx.lineWidth = 2.8;
+                    ctx.stroke();
+                    const headLen = 7,
+                        headAngle = 0.4;
+                    const a1 = angleRad + Math.PI - headAngle,
+                        a2 = angleRad + Math.PI + headAngle;
+                    const p1x = endX + headLen * Math.cos(a1),
+                        p1y = endY - headLen * Math.sin(a1);
+                    const p2x = endX + headLen * Math.cos(a2),
+                        p2y = endY - headLen * Math.sin(a2);
+                    ctx.beginPath();
+                    ctx.moveTo(endX, endY);
+                    ctx.lineTo(p1x, p1y);
+                    ctx.lineTo(p2x, p2y);
+                    ctx.closePath();
+                    ctx.fillStyle = '#e74c3c';
+                    ctx.fill();
+
+                    ctx.fillStyle = '#1a2634';
+                    ctx.font = 'bold 12px sans-serif';
+                    const label = robot.name || `r${robot.id}`;
+                    ctx.fillText(label, cx + 14, cy - 12);
+                    ctx.fillStyle = '#4a5b72';
+                    ctx.font = '10px sans-serif';
+                    ctx.fillText(`(${robot.x.toFixed(2)},${robot.y.toFixed(2)}) ${robot.angle.toFixed(1)}°`, cx + 14, cy + 4);
+                });
+
+                // 高亮选中
+                if (state.mode === 'connect' && state.selectedRobotId !== null) {
+                    const sel = state.robots.find(r => r.id === state.selectedRobotId);
+                    if (sel) {
+                        const pos = worldToScreen(sel.x, sel.y);
+                        ctx.beginPath();
+                        ctx.arc(pos.x, pos.y, ROBOT_RADIUS + 10, 0, 2 * Math.PI);
+                        ctx.strokeStyle = '#f39c12';
+                        ctx.lineWidth = 3.5;
+                        ctx.stroke();
+                    }
+                }
+
+                scaleInfo.textContent = `比例尺: ${state.scale.toFixed(2)} px/m`;
+                updateSidebar();
+            }
+
+            // ---------- 侧边栏 ----------
+            function updateSidebar() {
+                obsCount.textContent = state.obstacles.length;
+                if (state.obstacles.length === 0) {
+                    obsList.innerHTML = '<div class="empty-msg">暂无障碍物</div>';
+                } else {
+                    let html = '';
+                    state.obstacles.forEach((obs, idx) => {
+                        const name = obs.name || `障碍物${idx+1}`;
+                        html += `
+                                <div class="item-entry" data-type="obstacle" data-index="${idx}">
+                                    <div class="item-summary">
+                                        <span class="name">${name}</span>
+                                        <span class="coords">(${obs.x1.toFixed(2)},${obs.y1.toFixed(2)})</span>
+                                    </div>
+                                    <div class="item-detail" style="display:none;">
+                                        <div class="row"><label>名称</label><input class="edit-name" value="${name}" /></div>
+                                        <div class="row"><label>x₁</label><input class="edit-x1" type="number" step="0.05" value="${obs.x1}" /></div>
+                                        <div class="row"><label>y₁</label><input class="edit-y1" type="number" step="0.05" value="${obs.y1}" /></div>
+                                        <div class="row"><label>x₂</label><input class="edit-x2" type="number" step="0.05" value="${obs.x2}" /></div>
+                                        <div class="row"><label>y₂</label><input class="edit-y2" type="number" step="0.05" value="${obs.y2}" /></div>
+                                        <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:4px;">
+                                            <button class="btn-update" data-type="obstacle" data-index="${idx}">更新</button>
+                                            <button class="btn-delete" data-type="obstacle" data-index="${idx}">删除</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                    });
+                    obsList.innerHTML = html;
+                    obsList.querySelectorAll('.item-entry').forEach(entry => {
+                        const summary = entry.querySelector('.item-summary');
+                        const detail = entry.querySelector('.item-detail');
+                        summary.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const isOpen = detail.style.display !== 'none';
+                            detail.style.display = isOpen ? 'none' : 'flex';
+                        });
+                    });
+                    obsList.querySelectorAll('.btn-update[data-type="obstacle"]').forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const idx = parseInt(this.dataset.index);
+                            const entry = this.closest('.item-entry');
+                            const name = entry.querySelector('.edit-name').value.trim() || `障碍物${idx+1}`;
+                            const x1 = parseFloat(entry.querySelector('.edit-x1').value);
+                            const y1 = parseFloat(entry.querySelector('.edit-y1').value);
+                            const x2 = parseFloat(entry.querySelector('.edit-x2').value);
+                            const y2 = parseFloat(entry.querySelector('.edit-y2').value);
+                            if (isNaN(x1) || isNaN(y1) || isNaN(x2) || isNaN(y2)) { alert('请输入有效数字'); return; }
+                            const norm = normalizeRect(x1, y1, x2, y2);
+                            const xMin = 0;
+                            const xMax = state.sceneW;
+                            const yMin = 0;
+                            const yMax = state.sceneH;
+                            if (norm.x1 < xMin || norm.x2 > xMax || norm.y1 < yMin || norm.y2 > yMax) {
+                                alert('超出场景边界');
+                                return;
+                            }
+                            if (norm.x2 - norm.x1 < 0.01 || norm.y2 - norm.y1 < 0.01) { alert('尺寸太小'); return; }
+                            state.obstacles[idx] = { ...norm, name };
+                            render();
+                            setStatus(`✅ 障碍物已更新: ${name}`);
+                        });
+                    });
+                    obsList.querySelectorAll('.btn-delete[data-type="obstacle"]').forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const idx = parseInt(this.dataset.index);
+                            if (confirm(`确定删除障碍物 "${state.obstacles[idx].name||'未命名'}" 吗？`)) {
+                                state.obstacles.splice(idx, 1);
+                                render();
+                                setStatus('🗑️ 障碍物已删除');
+                            }
+                        });
+                    });
+                }
+
+                robotCount.textContent = state.robots.length;
+                if (state.robots.length === 0) {
+                    robotList.innerHTML = '<div class="empty-msg">暂无机器人</div>';
+                } else {
+                    let html = '';
+                    state.robots.forEach((robot) => {
+                        const name = robot.name || `机器人${robot.id}`;
+                        html += `
+                                <div class="item-entry" data-type="robot" data-id="${robot.id}">
+                                    <div class="item-summary">
+                                        <span class="name">${name}</span>
+                                        <span class="coords">(${robot.x.toFixed(2)},${robot.y.toFixed(2)})</span>
+                                    </div>
+                                    <div class="item-detail" style="display:none;">
+                                        <div class="row"><label>名称</label><input class="edit-name" value="${name}" /></div>
+                                        <div class="row"><label>x</label><input class="edit-x" type="number" step="0.05" value="${robot.x}" /></div>
+                                        <div class="row"><label>y</label><input class="edit-y" type="number" step="0.05" value="${robot.y}" /></div>
+                                        <div class="row"><label>角度</label><input class="edit-angle" type="number" step="1" value="${robot.angle}" /></div>
+                                        <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:4px;">
+                                            <button class="btn-update" data-type="robot" data-id="${robot.id}">更新</button>
+                                            <button class="btn-delete" data-type="robot" data-id="${robot.id}">删除</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                    });
+                    robotList.innerHTML = html;
+                    robotList.querySelectorAll('.item-entry').forEach(entry => {
+                        const summary = entry.querySelector('.item-summary');
+                        const detail = entry.querySelector('.item-detail');
+                        summary.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const isOpen = detail.style.display !== 'none';
+                            detail.style.display = isOpen ? 'none' : 'flex';
+                        });
+                    });
+                    robotList.querySelectorAll('.btn-update[data-type="robot"]').forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const id = parseInt(this.dataset.id);
+                            const entry = this.closest('.item-entry');
+                            const name = entry.querySelector('.edit-name').value.trim() || `机器人${id}`;
+                            const x = parseFloat(entry.querySelector('.edit-x').value);
+                            const y = parseFloat(entry.querySelector('.edit-y').value);
+                            let angle = parseFloat(entry.querySelector('.edit-angle').value);
+                            if (isNaN(x) || isNaN(y) || isNaN(angle)) { alert('请输入有效数字'); return; }
+                            angle = normalizeAngle(angle);
+                            const pos = clampWorld(x, y, 0.05);
+                            const robot = state.robots.find(r => r.id === id);
+                            if (robot) {
+                                robot.x = pos.x;
+                                robot.y = pos.y;
+                                robot.angle = angle;
+                                robot.name = name;
+                                render();
+                                setStatus(`✅ 机器人已更新: ${name}`);
+                            }
+                        });
+                    });
+                    robotList.querySelectorAll('.btn-delete[data-type="robot"]').forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const id = parseInt(this.dataset.id);
+                            const robot = state.robots.find(r => r.id === id);
+                            if (!robot) return;
+                            if (confirm(`确定删除机器人 "${robot.name||'未命名'}" 吗？`)) {
+                                state.robots = state.robots.filter(r => r.id !== id);
+                                state.connections = state.connections.filter(c => c.fromId !== id && c.toId !==
+                                id);
+                                if (state.selectedRobotId === id) state.selectedRobotId = null;
+                                render();
+                                setStatus(`🗑️ 机器人已删除`);
+                            }
+                        });
+                    });
+                }
+            }
+
+            // ---------- 视图 ----------
+            function fitView() {
+                const W = canvas._cssWidth,
+                    H = canvas._cssHeight;
+                const scaleX = W / state.sceneW;
+                const scaleY = H / state.sceneH;
+                state.scale = Math.min(scaleX, scaleY) * 0.90;
+                const sw = state.sceneW * state.scale;
+                const sh = state.sceneH * state.scale;
+                state.offsetX = (W - sw) / 2;
+                state.offsetY = (H - sh) / 2;
+                render();
+            }
+
+            // ---------- 场景 ----------
+            function initScene() {
+                const w = parseFloat(widthInput.value) || 10;
+                const h = parseFloat(heightInput.value) || 8;
+                if (w <= 0 || h <= 0) { alert('请输入有效的正数'); return; }
+                state.sceneW = w;
+                state.sceneH = h;
+                state.obstacles = [];
+                state.robots = [];
+                state.connections = [];
+                state.nextRobotId = 1;
+                state.selectedRobotId = null;
+                setupCanvas();
+                fitView();
+                sceneConfig.classList.add('hidden');
+                reconfigBtn.style.display = 'inline-block';
+                setStatus(`✅ 场景已初始化: ${w}×${h} m (x向右, y向上, 原点左下角)`);
+            }
+
+            function showConfig() {
+                sceneConfig.classList.remove('hidden');
+                reconfigBtn.style.display = 'none';
+            }
+
+            // ---------- 添加 ----------
+            function addObstacleByCoords(x1, y1, x2, y2, name) {
+                const norm = normalizeRect(x1, y1, x2, y2);
+                const xMin = 0;
+                const xMax = state.sceneW;
+                const yMin = 0;
+                const yMax = state.sceneH;
+                if (norm.x1 < xMin || norm.x2 > xMax || norm.y1 < yMin || norm.y2 > yMax) { alert('超出边界'); return; }
+                if (norm.x2 - norm.x1 < 0.01 || norm.y2 - norm.y1 < 0.01) { alert('尺寸太小'); return; }
+                const obsName = name || genObsName();
+                state.obstacles.push({ ...norm, name: obsName });
+                render();
+                setStatus(`🧱 添加障碍物: ${obsName}`);
+            }
+
+            function addRobotByCoords(x, y, angleDeg, name) {
+                const pos = clampWorld(x, y, 0.05);
+                const angle = normalizeAngle(angleDeg);
+                const id = state.nextRobotId++;
+                const robotName = name || genRobotName();
+                state.robots.push({ id, x: pos.x, y: pos.y, angle, name: robotName });
+                render();
+                setStatus(`🤖 添加机器人: ${robotName} (角度 ${angle.toFixed(1)}°)`);
+            }
+
+            function addObstacleClick(wx, wy) {
+                const halfW = 0.25, // x方向半宽
+                    halfH = 0.2; // y方向半高
+                let x1 = wx - halfW,
+                    y1 = wy - halfH;
+                let x2 = wx + halfW,
+                    y2 = wy + halfH;
+                const xMin = 0,
+                    xMax = state.sceneW;
+                const yMin = 0,
+                    yMax = state.sceneH;
+                if (x1 < xMin) { x1 = xMin;
+                    x2 = xMin + 0.4; }
+                if (y1 < yMin) { y1 = yMin;
+                    y2 = yMin + 0.4; }
+                if (x2 > xMax) { x2 = xMax;
+                    x1 = xMax - 0.4; }
+                if (y2 > yMax) { y2 = yMax;
+                    y1 = yMax - 0.4; }
+                addObstacleByCoords(x1, y1, x2, y2);
+            }
+
+            function addRobotClick(wx, wy) {
+                const angleStr = prompt('请输入朝向角度 (0°为x正方向，逆时针增加):', '0');
+                if (angleStr === null) return;
+                let angle = parseFloat(angleStr);
+                if (isNaN(angle)) { alert('请输入有效数字'); return; }
+                addRobotByCoords(wx, wy, angle);
+            }
+
+            // ---------- 连接 ----------
+            function connectRobots(fromId, toId) {
+                if (fromId === toId) { setStatus('不能连接同一个点'); return; }
+                if (state.connections.some(c => (c.fromId === fromId && c.toId === toId) || (c.fromId === toId && c.toId ===
+                        fromId))) {
+                    setStatus('已连接');
+                    return;
+                }
+                state.connections.push({ fromId, toId });
+                render();
+                setStatus(`🔗 连接 r${fromId} ↔ r${toId}`);
+            }
+
+            // ---------- 命中 ----------
+            function hitObstacle(wx, wy) {
+                for (let i = state.obstacles.length - 1; i >= 0; i--) {
+                    const o = state.obstacles[i];
+                    if (wx >= o.x1 && wx <= o.x2 && wy >= o.y1 && wy <= o.y2) return i;
+                }
+                return -1;
+            }
+
+            function hitRobot(wx, wy) {
+                const th = HIT_THRESHOLD / state.scale;
+                for (let i = state.robots.length - 1; i >= 0; i--) {
+                    const r = state.robots[i];
+                    const dx = wx - r.x,
+                        dy = wy - r.y;
+                    if (dx * dx + dy * dy <= th * th) return r.id;
+                }
+                return null;
+            }
+
+            // ---------- 鼠标事件 ----------
+            function getMousePos(e) {
+                const rect = canvas.getBoundingClientRect();
+                return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+            }
+
+            function onMouseDown(e) {
+                if (state.mode === 'readonly') {
+                    const pos = getMousePos(e);
+                    state.isPanning = true;
+                    state.panStartX = pos.x;
+                    state.panStartY = pos.y;
+                    state.panOffsetX = state.offsetX;
+                    state.panOffsetY = state.offsetY;
+                    canvas.style.cursor = 'grab';
+                    e.preventDefault();
+                    return;
+                }
+
+                const pos = getMousePos(e);
+                const world = screenToWorld(pos.x, pos.y);
+                const { x: wx, y: wy } = world;
+                const hitR = hitRobot(wx, wy);
+                const hitO = hitObstacle(wx, wy);
+
+                if (e.button === 1 || (e.button === 0 && e.ctrlKey)) {
+                    state.isPanning = true;
+                    state.panStartX = pos.x;
+                    state.panStartY = pos.y;
+                    state.panOffsetX = state.offsetX;
+                    state.panOffsetY = state.offsetY;
+                    canvas.style.cursor = 'grab';
+                    e.preventDefault();
+                    return;
+                }
+
+                if (state.mode === 'connect') {
+                    if (hitR !== null) {
+                        if (state.selectedRobotId === null) {
+                            state.selectedRobotId = hitR;
+                            render();
+                            setStatus(`选中 r${hitR}，请点击第二个点`);
+                        } else {
+                            if (hitR === state.selectedRobotId) {
+                                state.selectedRobotId = null;
+                                render();
+                                setStatus('取消选中');
+                            } else {
+                                connectRobots(state.selectedRobotId, hitR);
+                                state.selectedRobotId = null;
+                            }
+                        }
+                    } else {
+                        if (state.selectedRobotId !== null) {
+                            state.selectedRobotId = null;
+                            render();
+                            setStatus('取消选中');
+                        } else {
+                            setStatus('请点击机器人点');
+                        }
+                    }
+                    return;
+                }
+
+                if (hitO !== -1) {
+                    const obs = state.obstacles[hitO];
+                    state.dragTarget = { type: 'obstacle', index: hitO, offsetX: wx - obs.x1, offsetY: wy - obs.y1 };
+                    state.isDragging = true;
+                    return;
+                }
+                if (hitR !== null) {
+                    const robot = state.robots.find(r => r.id === hitR);
+                    if (robot) {
+                        state.dragTarget = { type: 'robot', id: robot.id, offsetX: wx - robot.x, offsetY: wy - robot.y };
+                        state.isDragging = true;
+                        return;
+                    }
+                }
+
+                if (state.mode === 'obstacle') addObstacleClick(wx, wy);
+                else if (state.mode === 'robot') addRobotClick(wx, wy);
+            }
+
+            function onMouseMove(e) {
+                const pos = getMousePos(e);
+                const world = screenToWorld(pos.x, pos.y);
+                coordInfo.textContent = `鼠标: (${world.x.toFixed(2)}, ${world.y.toFixed(2)}) m`;
+
+                if (state.isPanning) {
+                    state.offsetX = state.panOffsetX + (pos.x - state.panStartX);
+                    state.offsetY = state.panOffsetY + (pos.y - state.panStartY);
+                    render();
+                    return;
+                }
+                if (state.isDragging && state.dragTarget) {
+                    if (state.dragTarget.type === 'obstacle') {
+                        const obs = state.obstacles[state.dragTarget.index];
+                        if (!obs) return;
+                        let newX1 = world.x - state.dragTarget.offsetX;
+                        let newY1 = world.y - state.dragTarget.offsetY;
+                        const w = obs.x2 - obs.x1,
+                            h = obs.y2 - obs.y1;
+                        let newX2 = newX1 + w,
+                            newY2 = newY1 + h;
+                        const xMin = 0,
+                            xMax = state.sceneW;
+                        const yMin = 0,
+                            yMax = state.sceneH;
+                        if (newX1 < xMin) { newX1 = xMin;
+                            newX2 = xMin + w; }
+                        if (newY1 < yMin) { newY1 = yMin;
+                            newY2 = yMin + h; }
+                        if (newX2 > xMax) { newX2 = xMax;
+                            newX1 = xMax - w; }
+                        if (newY2 > yMax) { newY2 = yMax;
+                            newY1 = yMax - h; }
+                        obs.x1 = newX1;
+                        obs.y1 = newY1;
+                        obs.x2 = newX2;
+                        obs.y2 = newY2;
+                        render();
+                    } else if (state.dragTarget.type === 'robot') {
+                        const robot = state.robots.find(r => r.id === state.dragTarget.id);
+                        if (!robot) return;
+                        let newX = world.x - state.dragTarget.offsetX;
+                        let newY = world.y - state.dragTarget.offsetY;
+                        const clamped = clampWorld(newX, newY, 0.05);
+                        robot.x = clamped.x;
+                        robot.y = clamped.y;
+                        render();
+                    }
+                    return;
+                }
+                if (state.mode !== 'readonly') {
+                    const hitR = hitRobot(world.x, world.y);
+                    const hitO = hitObstacle(world.x, world.y);
+                    canvas.style.cursor = (hitR !== null || hitO !== -1) ? 'grab' : 'crosshair';
+                } else {
+                    canvas.style.cursor = 'grab';
+                }
+            }
+
+            function onMouseUp(e) {
+                if (state.isPanning) { state.isPanning = false;
+                    canvas.style.cursor = 'default'; return; }
+                if (state.isDragging) { state.isDragging = false;
+                    state.dragTarget = null;
+                    render();
+                    setStatus('拖拽结束'); }
+            }
+
+            function onContextMenu(e) {
+                if (state.mode === 'readonly') { e.preventDefault(); return; }
+                e.preventDefault();
+                const pos = getMousePos(e);
+                const world = screenToWorld(pos.x, pos.y);
+                const hitR = hitRobot(world.x, world.y);
+                if (hitR !== null) {
+                    state.robots = state.robots.filter(r => r.id !== hitR);
+                    state.connections = state.connections.filter(c => c.fromId !== hitR && c.toId !== hitR);
+                    if (state.selectedRobotId === hitR) state.selectedRobotId = null;
+                    render();
+                    setStatus(`🗑️ 删除机器人 r${hitR}`);
+                    return;
+                }
+                const hitO = hitObstacle(world.x, world.y);
+                if (hitO !== -1) {
+                    state.obstacles.splice(hitO, 1);
+                    render();
+                    setStatus('🗑️ 删除障碍物');
+                }
+            }
+
+            function onWheel(e) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 1.1 : 1 / 1.1;
+                const pos = getMousePos(e);
+                const world = screenToWorld(pos.x, pos.y);
+                let newScale = state.scale * delta;
+                newScale = Math.min(Math.max(newScale, 0.1), 200);
+                state.offsetX = pos.x - world.x * newScale;
+                state.offsetY = pos.y - (state.sceneH - world.y) * newScale;
+                state.scale = newScale;
+                render();
+                setStatus(`🔍 缩放: ${state.scale.toFixed(2)} px/m`);
+            }
+
+            // ---------- 数据 ----------
+            function getData() {
+                return {
+                    version: 2,
+                    sceneW: state.sceneW,
+                    sceneH: state.sceneH,
+                    obstacles: state.obstacles,
+                    robots: state.robots,
+                    connections: state.connections,
+                    nextRobotId: state.nextRobotId,
+                };
+            }
+
+            function loadData(data) {
+                // 如果数据是旧版（version 1 或不存在），自动转换坐标（旧: x向上, y向左 -> 新: x向右, y向上）
+                if (!data.version || data.version === 1) {
+                    // 交换场景宽高
+                    let tmp = data.sceneW;
+                    data.sceneW = data.sceneH;
+                    data.sceneH = tmp;
+
+                    if (data.obstacles) {
+                        data.obstacles.forEach(o => {
+                            // 旧: x1_old (向上), y1_old (向左)
+                            // 新: x_new = y_old, y_new = x_old
+                            let x1 = o.y1,
+                                y1 = o.x1;
+                            let x2 = o.y2,
+                                y2 = o.x2;
+                            o.x1 = x1;
+                            o.y1 = y1;
+                            o.x2 = x2;
+                            o.y2 = y2;
+                        });
+                    }
+                    if (data.robots) {
+                        data.robots.forEach(r => {
+                            let x = r.y,
+                                y = r.x;
+                            r.x = x;
+                            r.y = y;
+                        });
+                    }
+                    data.version = 2;
+                    setStatus('📂 旧版数据已自动转换为新版坐标系 (x向右, y向上)');
+                }
+
+                state.sceneW = data.sceneW || 10;
+                state.sceneH = data.sceneH || 8;
+                state.obstacles = data.obstacles || [];
+                state.robots = data.robots || [];
+                state.connections = data.connections || [];
+                state.nextRobotId = data.nextRobotId || 1;
+                state.selectedRobotId = null;
+                widthInput.value = state.sceneW;
+                heightInput.value = state.sceneH;
+                setupCanvas();
+                fitView();
+                sceneConfig.classList.add('hidden');
+                reconfigBtn.style.display = 'inline-block';
+                if (data.version === 2) {
+                    setStatus('📂 数据已导入');
+                }
+            }
+
+            function setStatus(msg) { statusMsg.textContent = msg; }
+
+            // ---------- 模式 ----------
+            function setMode(mode) {
+                state.mode = mode;
+                if (mode === 'readonly') {
+                    addPanel.classList.add('disabled');
+                    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode ===
+                    'readonly'));
+                    state.selectedRobotId = null;
+                    canvas.style.cursor = 'grab';
+                    setStatus('👁️ 只读模式 (左键拖拽平移)');
+                } else {
+                    addPanel.classList.remove('disabled');
+                    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode ===
+                    mode));
+                    setStatus(`✏️ ${document.querySelector(`.mode-btn[data-mode="${mode}"]`).textContent.trim()} 模式`);
+                }
+                render();
+            }
+
+            // ---------- 事件绑定 ----------
+            function initEvents() {
+                canvas.addEventListener('mousedown', onMouseDown);
+                canvas.addEventListener('mousemove', onMouseMove);
+                canvas.addEventListener('mouseup', onMouseUp);
+                canvas.addEventListener('contextmenu', onContextMenu);
+                canvas.addEventListener('wheel', onWheel, { passive: false });
+                window.addEventListener('mouseup', function(e) {
+                    if (state.isPanning || state.isDragging) {
+                        state.isPanning = false;
+                        state.isDragging = false;
+                        state.dragTarget = null;
+                        canvas.style.cursor = 'default';
+                        render();
+                    }
+                });
+                modeBtns.forEach(btn => btn.addEventListener('click', function() {
+                    if (state.mode !== this.dataset.mode) setMode(this.dataset.mode);
+                }));
+                initBtn.addEventListener('click', initScene);
+                reconfigBtn.addEventListener('click', showConfig);
+                resetViewBtn.addEventListener('click', function() { fitView();
+                    setStatus('↺ 视图已重置'); });
+                exportBtn.addEventListener('click', function() {
+                    const data = getData();
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'scene.json';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    setStatus('📥 导出成功');
+                });
+                importBtn.addEventListener('click', function() { fileInput.click(); });
+                fileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = function(ev) { try { loadData(JSON.parse(ev.target.result)); } catch (err) { alert(
+                                'JSON解析失败'); } };
+                    reader.readAsText(file);
+                    fileInput.value = '';
+                });
+                addObstacleBtn.addEventListener('click', function() {
+                    if (state.mode === 'readonly') return;
+                    const x1 = parseFloat(obsX1.value),
+                        y1 = parseFloat(obsY1.value),
+                        x2 = parseFloat(obsX2.value),
+                        y2 = parseFloat(obsY2.value);
+                    if (isNaN(x1) || isNaN(y1) || isNaN(x2) || isNaN(y2)) { alert('请输入有效数字'); return; }
+                    addObstacleByCoords(x1, y1, x2, y2);
+                });
+                addRobotBtn.addEventListener('click', function() {
+                    if (state.mode === 'readonly') return;
+                    const x = parseFloat(robotX.value),
+                        y = parseFloat(robotY.value),
+                        angle = parseFloat(robotAngle.value);
+                    if (isNaN(x) || isNaN(y) || isNaN(angle)) { alert('请输入有效数字'); return; }
+                    addRobotByCoords(x, y, angle);
+                });
+                window.addEventListener('resize', function() { setupCanvas();
+                    fitView(); });
+            }
+
+            // ---------- 启动 ----------
+            function init() {
+                widthInput.value = state.sceneW;
+                heightInput.value = state.sceneH;
+                setupCanvas();
+                fitView();
+                initEvents();
+                document.querySelector('.mode-btn[data-mode="obstacle"]').classList.add('active');
+                setStatus(`✅ 就绪 (x向右, y向上, 原点在左下角 · 0°指向x正方向，逆时针增加)`);
+            }
+            init();
+        })();
+    </script>
+</body>
+</html>
